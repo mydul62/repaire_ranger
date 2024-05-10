@@ -39,7 +39,7 @@ const navlist = <>
           
           </ul>
       </li>
-      <li onClick={handleSearchdrop} className="  flex md:hidden items-center pl-4"><RiSearchLine size={20} /></li>
+      <li onClick={handleSearchdrop} className="  md:flex hidden items-center pl-4"><RiSearchLine size={20} /></li>
       
 </>
 

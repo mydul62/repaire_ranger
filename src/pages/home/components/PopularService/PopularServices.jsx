@@ -18,14 +18,16 @@ const datas = [1,2,3,4,5,6]
       {
      datas && datas.slice(0,4).map((data,i)=>(
         <div key={i}>
-        <div className=" flex justify-center gap-4 shadow-xl bg-[#eaeaeae3] p-3 rounded-md">
-          <div className=" w-[45%] ">
+        <div className=" flex md:flex-row flex-col justify-center gap-4 shadow-xl bg-[#eaeaeae3] p-3 rounded-md">
+          <div className=" md:w-[45%] ">
             <img src={image1} className="  rounded-md w-full h-full" alt="Movie" />
           </div>{" "}
-          <div className=" w-[55%] space-y-4 bg-base-100 p-3">
-            <div className=" flex justify-between items-center">
-            <h2 className=" text-[[#1D3A59] font-medium text-2xl">Mobile dispaly change and fix</h2>
-            <h2>$434</h2>
+          <div className=" w-full md:w-[55%] space-y-4 bg-base-100 p-3">
+            <div className=" flex justify-between md:gap-4 gap-6 ">
+            <div>
+            <h2 className="  text-[[#1D3A59] font-medium text-2xl">Mobile dispaly change and fix</h2>
+            </div>
+            <h2 className=" font-medium mt-2">$434</h2>
             </div>
             <p className=" text-[#535d67]">Embrace change, seize opportunities, and cultivate resilience for a fulfilling journey ahead.</p>
       
