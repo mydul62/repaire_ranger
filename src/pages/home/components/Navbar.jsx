@@ -115,7 +115,7 @@ const handleMenuBar = (e) => {
     </div>
     
     
-    <div className=  {` w-full absolute ${search?'-top-72 h-0 delay-300 duration-1000':'top-0 h-[300px] duration-300'} min-h-[200px] bg-[#18324B]`}>
+    <div className=  {` w-full absolute ${search?'-top-72 h-0 delay-300 duration-1000':'top-0 h-[300px] duration-300'} min-h-[200px] bg-[#18324B] z-50`}>
     <div onClick={()=>handleSearchdrop(setSearch(false))} className=" flex py-4 justify-between mx-12 my-4">
     <h2> <a className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></a></h2>
     <h2 className=" text-white border-2 rounded-full p-1  font-bold"><RxCross1 size={30} />

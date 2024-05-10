@@ -1,5 +1,5 @@
 import image1 from "/image1.jpg";
-import user from "/user.png";
+import userImg from "/userImg.png";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
@@ -33,7 +33,7 @@ const datas = [1,2,3,4,5,6]
       
             <div className=" flex  items-center justify-between border-t-2 border-dashed pt-4">
             <div className="h-9 w-9 ">
-            <img src={user} alt="" />
+            <img src={userImg} alt="" />
             </div>
             <h2>Md mydul islam</h2>
             <div className="card-actions justify-end ">

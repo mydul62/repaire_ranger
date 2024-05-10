@@ -6,8 +6,8 @@ import { IoLogoLinkedin } from "react-icons/io5";
 const Footer = () => {
   return (
     <div className=" bg-[#18324B] py-[108px]">
-     <div className="max-w-7xl mx-auto">
-     <div className=" flex justify-between flex-wrap ">
+     <div className="max-w-7xl w-[90%] mx-auto">
+     <div className=" flex gap-8 justify-between flex-wrap ">
 <div>
 <h2> <a className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></a></h2>
 </div>

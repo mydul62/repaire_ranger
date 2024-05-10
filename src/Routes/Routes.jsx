@@ -12,6 +12,7 @@ import ServiceToDo from "../pages/SeviceToDo/ServiceToDo";
 import Login from '../pages/Login/Login'
 import Registration from "../pages/Registration/Registration";
 import PriveteRoutes from "./PriveteRoutes";
+import SingleServiceDetails from "../Shared/SingleServiceDetails/SingleServiceDetails";
 
 export const router =createBrowserRouter([
 {
@@ -54,6 +55,10 @@ children:[
 {
   path:'/registration',
   element:<Registration></Registration>
+},
+{
+  path:'/singleservicedetails',
+  element:<SingleServiceDetails></SingleServiceDetails>
 }
 ]
 }
