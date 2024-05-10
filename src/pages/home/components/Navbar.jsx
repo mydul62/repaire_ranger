@@ -3,12 +3,15 @@ import { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { AiOutlineCaretUp } from "react-icons/ai";
+import { RiSearchLine } from "react-icons/ri";
+import { RxCross1 } from "react-icons/rx";
 
 
 const Navbar = () => {
 const [drop,setDrop]=useState(false);
 const {user,logout}=useAuth();
 const [show, setShow]=useState(false)
+const [search, setSearch]=useState(true)
 
 const handleLogOut =()=>{
   logout()
@@ -16,6 +19,9 @@ const handleLogOut =()=>{
 
 const handleDropDrown = ()=>{
   setDrop(!drop)
+}
+const handleSearchdrop = ()=>{
+setSearch(!search)
 }
 const navlist = <>
   <li><NavLink  >Home</NavLink></li>
@@ -30,9 +36,10 @@ const navlist = <>
             <li><NavLink to={'/manageservice'}>Manage Service</NavLink></li>
             <li><NavLink to={'/bookservice'}>Booked-Services</NavLink></li>
             <li><NavLink to={'/servicetodo'}>Service-To-Do</NavLink></li>
-           
+          
           </ul>
       </li>
+      <li onClick={handleSearchdrop} className=" flex items-center pl-4"><RiSearchLine size={20} /></li>
       
 </>
 
@@ -43,17 +50,21 @@ const handleMenuBar = (e) => {
 
 
   return (
-  <div className=" fixed w-full ">
-    <div className=" bg-transparent border-b border-[#eeeeee68]">
+  <div className=" py-5  w-full ">
+    <div className=" bg-white">
       <div className="navbar max-w-7xl mx-auto ">
-  <div className="navbar-start">
-    <a className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></a>
-  </div>
+<div className="navbar-start ">
+<div className=" flex gap-12 items-center">
+    <Link to={'/'} className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></Link>
+ 
   <div className="navbar-center hidden lg:flex ">
     <ul className=" flex justify-center gap-5 uppercase py-2 text-[16px] font-medium text-[#535353]">
     {navlist}
     </ul>
   </div>
+  </div>
+
+</div>
   <div className="navbar-end gap-3">
    {
    !user &&  <Link to={'/login'} className="btn">Login</Link> 
@@ -97,6 +108,20 @@ const handleMenuBar = (e) => {
     <ul className=" flex flex-col py-20 text-2xl  border-2 border-green-400 rounded-md p-8 pr-16 gap-8 bg-[#eaeaeae7] ">
     {navlist}
     </ul>
+    </div>
+    <div className=  {` w-full absolute ${search?'-top-72 h-0 delay-300 duration-1000':'top-0 h-[300px] duration-300'} min-h-[200px] bg-[#18324B]`}>
+    <div onClick={()=>handleSearchdrop(setSearch(false))} className=" flex py-4 justify-between mx-12 my-4">
+    <h2> <a className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></a></h2>
+    <h2 className=" text-white border-2 rounded-full p-1  font-bold"><RxCross1 size={30} />
+</h2></div>
+
+<div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-12">
+<input type="text" placeholder="Type Words" className=" bg-transparent text-white font-bold text-2xl uppercase   outline-none   w-full py-4 " />
+<div className={` float-left h-[1px] bg-[#82738e] ${search?'w-0 duration-300':'w-full duration-1000'} `}>
+
+</div>
+</div>
+    
     </div>
     </div>
   );

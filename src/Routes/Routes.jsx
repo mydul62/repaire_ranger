@@ -11,6 +11,7 @@ import BookService from "../pages/BookedService/BookService";
 import ServiceToDo from "../pages/SeviceToDo/ServiceToDo";
 import Login from '../pages/Login/Login'
 import Registration from "../pages/Registration/Registration";
+import PriveteRoutes from "./PriveteRoutes";
 
 export const router =createBrowserRouter([
 {
@@ -31,7 +32,7 @@ children:[
 },
 {
   path:'/addservice',
-  element:<AddService></AddService>
+  element:<PriveteRoutes><AddService></AddService></PriveteRoutes>
   
 },
 {

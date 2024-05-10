@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { FaRegEye } from "react-icons/fa6";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { FaGoogle, FaRegEye } from "react-icons/fa6";
 import { IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
@@ -8,8 +8,10 @@ import toast from "react-hot-toast";
 
 const Login = () => {
 const [show,setShow]=useState(false)
-const {SignInWithPassword}=useAuth()
-  
+const {SignInWithPassword,googleSignIn}=useAuth()
+const navigate = useNavigate();
+const location = useLocation();
+const pathform = location?.state || "/";
 const handleLoginWithPass = (e)=>{
   e.preventDefault();
   const form = e.target;
@@ -21,6 +23,7 @@ const handleLoginWithPass = (e)=>{
   
     // Signed up 
    toast.success('Loged-in succsess')
+   navigate(pathform);
    console.log(result);
     // ...
   })
@@ -28,8 +31,20 @@ const handleLoginWithPass = (e)=>{
     console.log('opps');
     // ..
   });
-  e.form.clear()
 }
+
+const handleGoogleSignin = () => {
+  googleSignIn()
+  .then(result=>{
+    if (result.user) {
+      toast.success("Sign In sucsessfully");
+      navigate(pathform);
+    }
+    })
+    .catch((error) => {
+      toast.error(error.message.slice(10));
+    });
+};
 
 const handleToggle = ()=>{
   setShow(!show)
@@ -38,7 +53,8 @@ const handleToggle = ()=>{
   <div className=" bg-[#f0f2f5]">
     <div className=" max-w-7xl flex flex-col justify-center items-center  min-h-screen mx-auto">
     
-     <form onSubmit={handleLoginWithPass} className=" w-[90%] md:w-[30%] mx-auto bg-white p-6 rounded-md shadow-md ">
+<div className="w-[90%] md:w-[30%] mx-auto bg-white p-6 rounded-md shadow-md ">
+<form onSubmit={handleLoginWithPass} className="  ">
      <h2 className=" text-3xl text-center my-4 font-bold text-[#535353]">Login Now</h2>
      <div className=" space-y-4 mb-4">
      <input type="email" placeholder="Enter Your Email" name="email" className="input input-bordered w-full " />
@@ -56,10 +72,19 @@ const handleToggle = ()=>{
     <div className=" flex justify-center">
     <Link to={'/registration'}> <button className=" btn bg-green-500 my-4 text-white text-xl">Create new account</button></Link>
     </div>
+   
      </form>
-    
+     <button
+              onClick={handleGoogleSignin}
+              className="  flex items-center justify-center gap-2 w-full rounded-sm text-white py-1 bg-[#ff6b6b]"
+            >
+              <FaGoogle size={20} />
+              <span>Google</span>
+            </button>
      
     </div>
+    
+</div>
   </div>
   );
 };
