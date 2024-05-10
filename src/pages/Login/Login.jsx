@@ -53,7 +53,7 @@ const handleToggle = ()=>{
   <div className=" bg-[#f0f2f5]">
     <div className=" max-w-7xl flex flex-col justify-center items-center  min-h-screen mx-auto">
     
-<div className="w-[90%] md:w-[30%] mx-auto bg-white p-6 rounded-md shadow-md ">
+<div className="w-[90%] md:w-[80%] lg:w-[30%] mx-auto bg-white p-6 rounded-md shadow-md ">
 <form onSubmit={handleLoginWithPass} className="  ">
      <h2 className=" text-3xl text-center my-4 font-bold text-[#535353]">Login Now</h2>
      <div className=" space-y-4 mb-4">

@@ -39,7 +39,7 @@ const navlist = <>
           
           </ul>
       </li>
-      <li onClick={handleSearchdrop} className=" flex items-center pl-4"><RiSearchLine size={20} /></li>
+      <li onClick={handleSearchdrop} className="  flex md:hidden items-center pl-4"><RiSearchLine size={20} /></li>
       
 </>
 
@@ -66,6 +66,7 @@ const handleMenuBar = (e) => {
 
 </div>
   <div className="navbar-end gap-3">
+  <button onClick={handleSearchdrop} className=" flex md:flex lg:hidden items-center pl-4"><RiSearchLine size={20} /></button>
    {
    !user &&  <Link to={'/login'} className="btn">Login</Link> 
    }
@@ -84,7 +85,7 @@ const handleMenuBar = (e) => {
     }
     
     <div>
-    <label onChange={handleMenuBar} className="btn btn-circle md:hidden flex swap swap-rotate">
+    <label onChange={handleMenuBar} className="btn btn-circle lg:hidden  swap swap-rotate">
   
   {/* this hidden checkbox controls the state */}
   <input   type="checkbox" />
@@ -104,11 +105,16 @@ const handleMenuBar = (e) => {
 
 </div>
     </div>
-    <div className= {`absolute top-15 ${show?'right-0 duration-500':'-right-80 duration-500'} z-40 mt-4 md:hidden block `}>
+    
+    
+    
+    <div className= {`absolute top-15 ${show?'right-0 flex  duration-500':'-right-80 hidden duration-500'} z-40 mt-4 lg:hidden block `}>
     <ul className=" flex flex-col py-20 text-2xl  border-2 border-green-400 rounded-md p-8 pr-16 gap-8 bg-[#eaeaeae7] ">
     {navlist}
     </ul>
     </div>
+    
+    
     <div className=  {` w-full absolute ${search?'-top-72 h-0 delay-300 duration-1000':'top-0 h-[300px] duration-300'} min-h-[200px] bg-[#18324B]`}>
     <div onClick={()=>handleSearchdrop(setSearch(false))} className=" flex py-4 justify-between mx-12 my-4">
     <h2> <a className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></a></h2>

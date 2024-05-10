@@ -1,7 +1,7 @@
 import img from '/banner.jpg'
 const Carousel = () => {
   return (
-    <div className='min-h-screen'>
+    <div className=''>
       <img src={img} alt="" className=' h-[700px] w-full '/>
     </div>
   );
