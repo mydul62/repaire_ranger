@@ -31,7 +31,7 @@ const navlist = <>
 :<AiOutlineCaretDown />
 
 }</span> </summary>
-          <ul className={`p-2 absolute   ${drop?'block bg-white shadow-md ':'hidden'}  flex flex-col gap-3 bg-slate-100 px-8  rounded-sm *:border-b *:py-3`}>
+          <ul className={`p-2 absolute  z-40  ${drop?'block duration-1000 bg-white shadow-md ':'hidden'}  flex flex-col gap-3 bg-slate-100 px-8  rounded-sm *:border-b *:py-3`}>
             <li><NavLink to={'/addservice'}>Add Service</NavLink></li>
             <li><NavLink to={'/manageservice'}>Manage Service</NavLink></li>
             <li><NavLink to={'/bookservice'}>Booked-Services</NavLink></li>
@@ -52,7 +52,7 @@ const handleMenuBar = (e) => {
   return (
   <div className=" py-5  w-full ">
     <div className=" bg-white">
-      <div className="navbar max-w-7xl mx-auto ">
+      <div className="navbar max-w-7xl w-[95%] mx-auto ">
 <div className="navbar-start ">
 <div className=" flex gap-12 items-center">
     <Link to={'/'} className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></Link>

@@ -57,7 +57,7 @@ children:[
   element:<Registration></Registration>
 },
 {
-  path:'/singleservicedetails',
+  path:'/singleservicedetails/:id',
   element:<SingleServiceDetails></SingleServiceDetails>
 }
 ]
