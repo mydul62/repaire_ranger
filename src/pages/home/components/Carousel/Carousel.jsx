@@ -1,12 +1,132 @@
+import React, { useRef, useState } from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import img1 from "/banner.jpg";
+import img2 from "/image1.jpg";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
 
-const Carousel = () => {
+// import required modules
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
+
+export default function App() {
   return (
-    <div className='relative'>
-      <img src="https://i.ibb.co/1M5tMqD/pexels-prateekkatyal-2740956.jpg" alt="" className=' h-[700px] w-full '/>
-      <div className=" left-0 top-0 bottom-0 right-0 absolute inset-1 bg-[#040108b8] flex justify-center items-center text-white">
-    </div>
-    </div>
-  );
-};
+    <>
+      <Swiper
+        spaceBetween={30}
+        centeredSlides={true}
+        autoplay={{
+          delay:5000,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="mySwiper max-h-[90vh]"
+      >
+        <SwiperSlide>
+          <div className="relative">
+            <img
+              src="https://i.ibb.co/1M5tMqD/pexels-prateekkatyal-2740956.jpg"
+              alt=""
+              className=" h-[700px] w-full "
+            />
+            <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+              <div className=" max-w-7xl mx-auto">
+                <div className=" w-[60%] space-y-6">
+                  <h2 className=" text-4xl  font-Rancho">
+                    WE ALWAYS ENSURE THE BEST SERVICE
+                  </h2>
+                  <p className=" ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Mollitia, voluptates ut. Quas pariatur vitae praesentium,
+                    deserunt modi asperiores consequuntur enim in, veniam
+                    dolorum sit quidem obcaecati laudantium. Quod aperiam quam
+                    iste repellendus obcaecati autem, eos, enim nam accusantium
+                    id qui.
+                  </p>
+                  <div>
+                    <Link to={"/allservices"}>
+                      {" "}
+                      <button className=" btn">Take Our Services</button>
+                    </Link>
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative">
+            <img
+              src="https://i.ibb.co/xDnHwQ1/senior-man-with-equipment-soldering-working-home.jpg"
+              alt=""
+              className=" h-[700px] w-full "
+            />
+            <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+              <div className=" max-w-7xl mx-auto">
+                <div className=" w-[60%] text-center mx-auto space-y-6">
+                  <h2 className=" text-3xl font-Rancho">
+                    WE ALWAYS ENSURE THE BEST SERVICE
+                  </h2>
+                  <p className=" ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Mollitia, voluptates ut. Quas pariatur vitae praesentium,
+                    deserunt modi asperiores consequuntur enim in, veniam
+                    dolorum sit quidem obcaecati laudantium. Quod aperiam quam
+                    iste repellendus obcaecati autem, eos, enim nam accusantium
+                    id qui.
+                  </p>
+                  <div>
+                    <Link to={"/allservices"}>
+                      {" "}
+                      <button className=" btn">Take Our Services</button>
+                    </Link>
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="relative">
+            <img
+              src="https://i.ibb.co/0Jfq4cD/close-up-hands-working-with-tools.jpg"
+              alt=""
+              className=" h-[700px] w-full "
+            />
+            <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+              <div className=" flex justify-end max-w-7xl mx-auto">
+                <div className=" w-[60%] text-right float-right  space-y-6">
+                  <h2 className=" text-3xl font-Rancho">
+                    WE ALWAYS ENSURE THE BEST SERVICE
+                  </h2>
+                  <p className="  ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Mollitia, voluptates ut. Quas pariatur vitae praesentium,
+                    deserunt modi asperiores consequuntur enim in, veniam
+                    dolorum sit quidem obcaecati laudantium. Quod aperiam quam
+                    iste repellendus obcaecati autem, eos, enim nam accusantium
+                    id qui.
+                  </p>
+                  <div>
+                    <Link to={"/allservices"}>
+                      {" "}
+                      <button className=" btn">Take Our Services</button>
+                    </Link>
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
 
-export default Carousel;
+      </Swiper>
+    </>
+  );
+}

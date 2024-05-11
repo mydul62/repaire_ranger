@@ -28,25 +28,21 @@ children:[
   element:<AllServices></AllServices>
 },
 {
-  path:'/singleservice',
-  element:<SingleService></SingleService>
-},
-{
   path:'/addservice',
   element:<PriveteRoutes><AddService></AddService></PriveteRoutes>
   
 },
 {
   path:'/manageservice',
-  element:<ManageService></ManageService>
+  element:<PriveteRoutes><ManageService></ManageService></PriveteRoutes>
 },
 {
   path:'/bookservice',
-  element:<BookService></BookService>
+  element:<PriveteRoutes><BookService></BookService></PriveteRoutes>
 },
 {
   path:'servicetodo',
-  element:<ServiceToDo></ServiceToDo>
+  element:<PriveteRoutes><ServiceToDo></ServiceToDo></PriveteRoutes>
 },
 {
   path:'/login',
@@ -58,7 +54,7 @@ children:[
 },
 {
   path:'/singleservicedetails/:id',
-  element:<SingleServiceDetails></SingleServiceDetails>
+  element:<PriveteRoutes><SingleServiceDetails></SingleServiceDetails></PriveteRoutes>
 }
 ]
 }

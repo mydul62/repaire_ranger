@@ -20,11 +20,11 @@ const [datas,setDatas]=useState([])
     // always executed
   });
   },[])
-
   return (
-    <div className=" max-w-7xl mx-auto my-24">
+   <div className="">
+    <div className=" max-w-7xl mx-auto py-24 ">
       <div className=" w-60%">
-        <h1 className=" text-2xl md:text-4xl text-[#1D3A59] font-semibold font-Rancho">
+        <h1 className=" text-2xl md:text-4xl  font-semibold font-Rancho">
           Our Popular <span className=" text-green-500">Services</span>
         </h1>
       </div>
@@ -32,22 +32,22 @@ const [datas,setDatas]=useState([])
       {
      datas && datas.slice(0,4).map((data,i)=>(
         <div key={i}>
-        <div className=" flex md:flex-row flex-col justify-center gap-4 shadow-xl bg-[#eaeaeae3] p-3 rounded-md">
+        <div className=" flex md:flex-row flex-col justify-center gap-4 shadow-xl bg-[#eaeaeab8] p-3 rounded-md">
           <div className=" md:w-[45%] ">
             <img src={data?.imgURL} className="  rounded-md w-full h-[250px]" alt="Movie" />
           </div>{" "}
-          <div className=" w-full md:w-[55%] space-y-4 bg-base-100 p-3">
+          <div className=" w-full md:w-[55%] space-y-4 bg-base-100 rounded-r-md p-3">
             <div className=" flex justify-between md:gap-4 gap-6 ">
             <div>
             <h2 className="  text-[[#1D3A59] font-medium text-2xl">{data?.serviceName}</h2>
             </div>
             <h2 className=" font-medium mt-2">${data?.price}</h2>
             </div>
-            <p className=" text-[#535d67]">{data?.description.slice(0,100)}</p>
-      
+            <p className=" ">{data?.description.slice(0,100)}</p>
+            
             <div className=" flex  items-center justify-between border-t-2 border-dashed pt-4">
             <div className="h-9 w-9 ">
-            <img src={userImg} alt="" />
+            <img src={data?.providerImage} alt="" />
             </div>
             <h2>{data?.providerName}</h2>
             <div className="card-actions justify-end ">
@@ -69,6 +69,7 @@ const [datas,setDatas]=useState([])
 </span></button></Link>
       </div>
     </div>
+   </div>
   );
 };
 

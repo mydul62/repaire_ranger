@@ -55,11 +55,12 @@ const SingleServiceDetails = () => {
     .then(function (response) {
       Swal.fire({
         position: "top-end",
-        icon: "success",
+        icon: "success",                                              
         title: "Your service has been saved",
         showConfirmButton: false,
         timer: 1500
       });
+      navigate('/bookservice');
       console.log(response.data);
     })
     .catch(function (error) {
@@ -67,7 +68,7 @@ const SingleServiceDetails = () => {
     });
    
     console.log(updateInfo);
-    // navigate('/bookedservices');
+   
   };
 
   return (

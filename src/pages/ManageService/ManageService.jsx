@@ -138,7 +138,7 @@ const ManageService = () => {
 </dialog>
         </td>
         <th>
-          <button onClick={()=>handleDelete(data._id)} className="btn btn-circle text-red-700"><AiTwotoneDelete  size={20}/></button>
+          <button onClick={()=>handleDelete(data._id)} className="btn btn-circle text-red-700 "><AiTwotoneDelete  size={25}/></button>
         </th>
       </tr>
       ))

@@ -38,13 +38,13 @@ const Registration = () => {
   };
 
   return (
-    <div className=" bg-[#f0f2f5]">
-      <div className=" max-w-7xl flex flex-col justify-center items-center  min-h-screen mx-auto">
+    <div className=" ">
+      <div className=" grid grid-cols-2 max-w-7xl  flex-col justify-center items-center  min-h-screen mx-auto">
         <form
           onSubmit={handleLoginWithPass}
-          className="w-[30%] mx-auto bg-white p-6 rounded-md  "
+          className="w-[60%] mx-auto bg-white p-6 shadow-md rounded-md  "
         >
-          <h2 className=" text-3xl text-center my-4 font-bold text-[#535353]">
+          <h2 className=" text-3xl text-center my-4 font-bold font-Roboto">
             Register Now
           </h2>
           <div className=" space-y-4 mb-4">
@@ -87,6 +87,9 @@ const Registration = () => {
             </Link>
           </p>
         </form>
+        <div>
+        <img className=" w-[75%] rounded-md" src={'https://i.ibb.co/25txq25/undraw-Authentication-re-svpt.png'} alt="" />
+        </div>
       </div>
     </div>
   );
