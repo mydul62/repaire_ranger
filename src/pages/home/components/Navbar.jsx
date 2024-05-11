@@ -14,7 +14,7 @@ const Navbar = () => {
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState(true);
   const [theme, setTheme] = useState(false);
-
+  const [searchData,setSearchData]=useState('')
 
   const handleLogOut = () => {
     logout();
@@ -45,7 +45,12 @@ const Navbar = () => {
     htmlElement.setAttribute("data-theme", theme ? "night" : "light");
   }, [theme]);
 
-  
+  const handleSearch = (e)=>{
+    // e.prevemtDefault()
+    const dataValue = e.target.value;
+    setSearchData(dataValue)
+  }
+  console.log(searchData);
   const navlist = (
     <>
       <li>
@@ -270,7 +275,7 @@ const Navbar = () => {
         </div>
 
         <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-12">
-          <input
+          <input  onChange={handleSearch}
             type="text"
             placeholder="Type Words"
             className=" bg-transparent text-white font-bold text-2xl uppercase   outline-none   w-full py-4 "
