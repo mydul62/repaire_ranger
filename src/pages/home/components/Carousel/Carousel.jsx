@@ -37,18 +37,15 @@ export default function App() {
               className=" h-[700px] w-full "
             />
             <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
-              <div className=" max-w-7xl mx-auto">
-                <div className=" w-[60%] space-y-6">
-                  <h2 className=" text-4xl  font-Rancho">
+              <div className=" max-w-7xl w-[95%] mx-auto">
+                <div className=" md:w-[60%] space-y-6">
+                  <h2 className=" text-3xl md:text-4xl  font-Rancho">
                     WE ALWAYS ENSURE THE BEST SERVICE
                   </h2>
                   <p className=" ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Mollitia, voluptates ut. Quas pariatur vitae praesentium,
-                    deserunt modi asperiores consequuntur enim in, veniam
-                    dolorum sit quidem obcaecati laudantium. Quod aperiam quam
-                    iste repellendus obcaecati autem, eos, enim nam accusantium
-                    id qui.
+                    deserunt
                   </p>
                   <div>
                     <Link to={"/allservices"}>
@@ -70,17 +67,14 @@ export default function App() {
             />
             <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
               <div className=" max-w-7xl mx-auto">
-                <div className=" w-[60%] text-center mx-auto space-y-6">
+                <div className=" md:w-[60%] text-center mx-auto space-y-6">
                   <h2 className=" text-3xl font-Rancho">
                     WE ALWAYS ENSURE THE BEST SERVICE
                   </h2>
                   <p className=" ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Mollitia, voluptates ut. Quas pariatur vitae praesentium,
-                    deserunt modi asperiores consequuntur enim in, veniam
-                    dolorum sit quidem obcaecati laudantium. Quod aperiam quam
-                    iste repellendus obcaecati autem, eos, enim nam accusantium
-                    id qui.
+                    deserunt 
                   </p>
                   <div>
                     <Link to={"/allservices"}>
@@ -100,19 +94,16 @@ export default function App() {
               alt=""
               className=" h-[700px] w-full "
             />
-            <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+            <div className=" pr-4 left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
               <div className=" flex justify-end max-w-7xl mx-auto">
-                <div className=" w-[60%] text-right float-right  space-y-6">
+                <div className=" md:w-[60%] text-right float-right  space-y-6">
                   <h2 className=" text-3xl font-Rancho">
                     WE ALWAYS ENSURE THE BEST SERVICE
                   </h2>
                   <p className="  ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Mollitia, voluptates ut. Quas pariatur vitae praesentium,
-                    deserunt modi asperiores consequuntur enim in, veniam
-                    dolorum sit quidem obcaecati laudantium. Quod aperiam quam
-                    iste repellendus obcaecati autem, eos, enim nam accusantium
-                    id qui.
+                    deserunt 
                   </p>
                   <div>
                     <Link to={"/allservices"}>

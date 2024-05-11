@@ -22,9 +22,9 @@ const [datas,setDatas]=useState([])
   },[])
   return (
    <div className="">
-    <div className=" max-w-7xl mx-auto py-24 ">
+    <div className=" max-w-7xl w-[95%] mx-auto py-16 md:py-24 ">
       <div className=" w-60%">
-        <h1 className=" text-2xl md:text-4xl  font-semibold font-Rancho">
+        <h1 className=" text-3xl md:text-4xl  font-semibold font-Rancho">
           Our Popular <span className=" text-green-500">Services</span>
         </h1>
       </div>
@@ -32,7 +32,7 @@ const [datas,setDatas]=useState([])
       {
      datas && datas.slice(0,4).map((data,i)=>(
         <div key={i}>
-        <div className=" flex md:flex-row flex-col justify-center gap-4 shadow-xl bg-[#eaeaeab8] p-3 rounded-md">
+        <div className=" flex md:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-md">
           <div className=" md:w-[45%] ">
             <img src={data?.imgURL} className="  rounded-md w-full h-[250px]" alt="Movie" />
           </div>{" "}

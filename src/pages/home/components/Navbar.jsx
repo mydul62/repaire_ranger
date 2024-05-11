@@ -115,12 +115,14 @@ const Navbar = () => {
             </div>
           </div>
           <div className="navbar-end gap-3">
-            <button
+          <button
               onClick={handleSearchdrop}
               className=" flex md:flex lg:hidden items-center pl-4"
             >
               <RiSearchLine size={20} />
             </button>
+           <div className=" hidden md:flex items-center gap-3 ">
+           
             {!user && (
               <Link to={"/login"} className="btn">
                 Login
@@ -148,7 +150,8 @@ const Navbar = () => {
                 </button>
               </>
             )}
- <div className=" flex justify-end  gap-3">
+           </div>
+           <div className=" hidden md:flex justify-end  gap-3">
             <div
               onClick={handleToggle}
               className="btn btn-outline rounded-full "
@@ -200,7 +203,46 @@ const Navbar = () => {
             : "-right-80 absolute  duration-500"
         } z-40 mt-4 lg:hidden block `}
       >
-        <ul className=" flex flex-col py-20 text-2xl  border-2 border-green-400 rounded-md p-8 pr-16 gap-8 bg-[#eaeaeae7] ">
+        
+        <ul className=" flex flex-col pb-20 text-2xl  border-2 border-green-400 rounded-md px-8 pr-16 md:pt-8 pt-0 gap-8 text-[#010101] bg-[#eaeaea] ">
+        <div className=" flex md:hidden  gap-3 items-center">
+        <div
+              onClick={handleToggle}
+              className="btn btn-outline rounded-full "
+            >
+              {theme ? <MdDarkMode  size={25} /> : <CiDark color="black" size={25} />}
+            </div>
+            <div className=" flex md:hidden items-center gap-3 ">
+           
+            {!user && (
+              <Link to={"/login"} className="btn">
+                Login
+              </Link>
+            )}
+
+            {user && (
+              <>
+                <div className="dropdown dropdown-end">
+                  <div
+                    tabIndex={0}
+                    role="button"
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user.photoURL}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button className=" btn btn-outline" onClick={handleLogOut}>
+                  Logout
+                </button>
+              </>
+            )}
+           </div>
+        </div>
           {navlist}
         </ul>
       </div>

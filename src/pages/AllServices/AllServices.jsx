@@ -20,14 +20,14 @@ const [datas,setDatas]=useState([])
   },[])
   return (
     <div className="max-w-7xl mx-auto my-16">
-      <div className="w-[50%] mx-auto flex justify-center">
-        <h1 className="text-center text-2xl md:text-4xl border-b-4 pb-3 border-green-100 inline-block f  font-semibold font-Rancho">
+      <div className="md:w-[50%] mx-auto flex justify-center">
+        <h1 className="text-center text-3xl md:text-4xl border-b-4 pb-3 border-green-100 inline-block f  font-semibold font-Rancho">
           Our All Services
         </h1>
       </div>
-      <div className="grid grid-cols-1 gap-8 my-16">
+      <div className="grid grid-cols-1 gap-8 mt-12">
         {datas.map((data, i) => (
-          <div key={i} className=" w-[70%] mx-auto">
+          <div key={i} className="w-[95%] md:w-[80%] lg:w-[70%] mx-auto">
          <div className="flex flex-col  mx-auto rounded-lg shadow-md overflow-hidden">
   <img src={data?.imgURL} className="object-cover w-full h-64" alt="Movie" />
   <div className=" p-6">

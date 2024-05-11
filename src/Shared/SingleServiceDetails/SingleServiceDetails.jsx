@@ -99,14 +99,14 @@ const SingleServiceDetails = () => {
                 <h2 className="text-[#535353] text-2xl font-Roboto font-semibold">
                   {cartInfo.serviceName}
                 </h2>
-                <h2 className="font-Roboto">
-                  <span className="font-medium">Sort Description:</span>
-                  {cartInfo.description}
+                <h2 className="font-Roboto text-[#010101]">
+                  <span className="font-medium text-[#525252]">Sort Description:</span>
+                  {cartInfo.description.slice(0,100)}
                 </h2>
                 <div>
                   <div className="flex items-center gap-8 border-t pb-3 border-[#bbb] pt-4">
-                    <h2>
-                      <span className="font-medium font-Roboto">Services Area: </span>
+                    <h2 className="text-[#010101] ">
+                      <span className="font-medium font-Roboto text-[#010101]">Services Area: </span>
                       {cartInfo.serviceArea}
                     </h2>
                   </div>
@@ -114,12 +114,12 @@ const SingleServiceDetails = () => {
                     <div className="h-9 w-9">
                       <img src={userImg} alt="" />
                     </div>
-                    <h2>{cartInfo.providerName}</h2>
+                    <h2 className="text-[#010101]  font-Roboto">{cartInfo.providerName}</h2>
                     <div className="card-actions justify-end"></div>
                   </div>
                 </div>
                 <div className="space-y-4">
-                  <h2>
+                  <h2 className="text-[#010101] font-Roboto">
                     <span className="font-medium">Service Price:</span> ${cartInfo.price}{" "}
                   </h2>
                   <button
