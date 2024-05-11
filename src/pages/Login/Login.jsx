@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 
 const Login = () => {
-const [show,setShow]=useState(false)
+const [show,setShow]=useState(true)
 const {SignInWithPassword,googleSignIn}=useAuth()
 const navigate = useNavigate();
 const location = useLocation();
@@ -17,7 +17,6 @@ const handleLoginWithPass = (e)=>{
   const form = e.target;
   const email = form.email.value;
   const password = form.password.value;
-  console.log(email,password);
   SignInWithPassword(email,password)
   .then((result) => {
   
@@ -28,8 +27,8 @@ const handleLoginWithPass = (e)=>{
     // ...
   })
   .catch((error) => {
-    console.log('opps');
-    // ..
+    toast.error(error.message.slice(10));
+
   });
 }
 
@@ -57,9 +56,9 @@ const handleToggle = ()=>{
 <form onSubmit={handleLoginWithPass} className="  ">
      <h2 className=" text-3xl text-center my-4 font-bold text-[#535353]">Login Now</h2>
      <div className=" space-y-4 mb-4">
-     <input type="email" placeholder="Enter Your Email" name="email" className="input input-bordered w-full " />
+     <input type="email" placeholder="Enter Your Email" required name="email" className="input input-bordered w-full " />
     <div className=" relative">
-    <input type={`${show?'password':'text'}`} placeholder="Password" name="password" className="input input-bordered w-full " />
+    <input type={`${show?'password':'text'}`} required placeholder="Password" name="password" className="input input-bordered w-full " />
     <span onClick={handleToggle} className=" absolute top-0 right-4 translate-y-[100%] ">{show? <IoEyeOff />:<FaRegEye />
 } </span>
     </div>

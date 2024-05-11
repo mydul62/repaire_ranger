@@ -243,7 +243,7 @@ const Navbar = () => {
             )}
            </div>
         </div>
-          {navlist}
+          {navlist} 
         </ul>
       </div>
 

@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../Firebase/firebase-config";
+import toast from "react-hot-toast";
 
 const Registration = () => {
   const { registerWithPassword } = useAuth();
+  const navigate = useNavigate();
 
   const handleLoginWithPass = (e) => {
     e.preventDefault();
@@ -13,7 +15,6 @@ const Registration = () => {
     const email = form.email.value;
     const photoURL = form.photoURL.value;
     const password = form.password.value;
-    console.log(name, email, photoURL, password);
     registerWithPassword(email, password)
       .then((result) => {
         updateProfile(auth.currentUser, {
@@ -28,8 +29,8 @@ const Registration = () => {
             // An error occurred
             // ...
           });
-        alert("registered");
-        // ...
+        toast.success("Registration Successfull");
+        navigate('/')
       })
       .catch((error) => {
         console.log("opps");
@@ -42,7 +43,7 @@ const Registration = () => {
       <div className=" grid grid-cols-2 max-w-7xl  flex-col justify-center items-center  min-h-screen mx-auto">
         <form
           onSubmit={handleLoginWithPass}
-          className="w-[60%] mx-auto bg-white p-6 shadow-md rounded-md  "
+          className="w-[60%] mx-auto bg-white p-6 shadow-md rounded-md"
         >
           <h2 className=" text-3xl text-center my-4 font-bold font-Roboto">
             Register Now

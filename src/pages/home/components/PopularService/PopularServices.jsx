@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import userImg from "/userImg.png";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import axios from 'axios';
@@ -32,18 +31,18 @@ const [datas,setDatas]=useState([])
       {
      datas && datas.slice(0,4).map((data,i)=>(
         <div key={i}>
-        <div className=" flex md:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-md">
-          <div className=" md:w-[45%] ">
-            <img src={data?.imgURL} className="  rounded-md w-full h-[250px]" alt="Movie" />
+        <div className=" flex md:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
+          <div className=" md:w-[45%]  ">
+            <img src={data?.imgURL} className="  rounded-l-md w-full h-[215px]" alt="Movie" />
           </div>{" "}
-          <div className=" w-full md:w-[55%] space-y-4 bg-base-100 rounded-r-md p-3">
+          <div className=" w-full md:w-[55%] h-full space-y-4 bg-base-100 rounded-r-md p-3">
             <div className=" flex justify-between md:gap-4 gap-6 ">
             <div>
-            <h2 className="  text-[[#1D3A59] font-medium text-2xl">{data?.serviceName}</h2>
+            <h2 className="  text-[[#1D3A59] font-medium text-2xl">{data?.serviceName.slice(0,18)}..</h2>
             </div>
             <h2 className=" font-medium mt-2">${data?.price}</h2>
             </div>
-            <p className=" ">{data?.description.slice(0,100)}</p>
+            <p className=" ">{data?.description.slice(0,100)}...</p>
             
             <div className=" flex  items-center justify-between border-t-2 border-dashed pt-4">
             <div className="h-9 w-9 ">
