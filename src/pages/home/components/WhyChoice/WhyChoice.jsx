@@ -15,7 +15,7 @@ const WhyChoice = () => {
       
       {/* card star  */}
       <div className=" flex justify-start gap-6">
-      <img className=" h-[295px] w-full" src={'https://i.ibb.co/g3HfWGd/repairman-s-workplace-with-cell-phone-special-tools-desk.jpg'} alt="" />
+      <img className="h-[295px] w-full" src={'https://i.ibb.co/g3HfWGd/repairman-s-workplace-with-cell-phone-special-tools-desk.jpg'} alt="" />
       </div>
        {/* card end  */}
       {/* card star  */}

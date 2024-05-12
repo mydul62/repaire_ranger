@@ -2,14 +2,15 @@ import { useState } from "react";
 
 const Comments = ({commentInfo}) => {
   const [showReply,setShowReply]=useState(false)
-    
-                       console.log(commentInfo);
+ 
+
+
   return (
     <div className=" flex flex-col gap-4">
     
         <div>
         <div className=" bg-[#eaeaea] pt-3 pb-2  px-2 rounded-md">
-        <p className=" pb-2">hellow </p>
+        <p className=" pb-2">{commentInfo.name} </p>
         <div>
         <div className=" flex justify-start gap-4">
         <span onClick={()=>setShowReply(true)} className=" cursor-pointer font-bold font-Rancho">Reply</span>
@@ -25,12 +26,12 @@ const Comments = ({commentInfo}) => {
         </div>
         }
         </div>
-       <div>
-       {/* {
-      commentInfo.item.map(ele=>(
+       <div className=" pl-2 ">
+       {
+      commentInfo?.item?.map(ele=>(
         <Comments key={ele.id} commentInfo={ele} ></Comments>
       ))
-       } */}
+       }
        </div>
     </div>
   );

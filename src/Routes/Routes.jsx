@@ -4,7 +4,6 @@ import {
 } from "react-router-dom";
 import Home from "../pages/home/Home";
 import AllServices from "../pages/AllServices/AllServices";
-import SingleService from "../pages/SingleService/SingleService";
 import AddService from "../pages/Addservice/AddService";
 import ManageService from "../pages/ManageService/ManageService";
 import BookService from "../pages/BookedService/BookService";
@@ -13,11 +12,13 @@ import Login from '../pages/Login/Login'
 import Registration from "../pages/Registration/Registration";
 import PriveteRoutes from "./PriveteRoutes";
 import SingleServiceDetails from "../Shared/SingleServiceDetails/SingleServiceDetails";
+import Errorpage from "../pages/Errorpage/Errorpage";
 
 export const router =createBrowserRouter([
 {
 path:'/',
 element:<Root></Root>,
+errorElement:<Errorpage></Errorpage>,
 children:[
 {
   path:'/',
