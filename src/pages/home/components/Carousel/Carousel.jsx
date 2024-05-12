@@ -7,11 +7,10 @@ import img2 from "/image1.jpg";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
-
+import '../Testimonial/testimonial.css'
 export default function App() {
   return (
     <>

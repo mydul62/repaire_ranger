@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import { AiOutlineCaretDown } from "react-icons/ai";
@@ -15,7 +15,7 @@ const Navbar = () => {
   const [search, setSearch] = useState(true);
   const [theme, setTheme] = useState(false);
   const [searchData,setSearchData]=useState('')
-
+  const navigate = useNavigate()
   const handleLogOut = () => {
     logout();
   };
@@ -25,6 +25,7 @@ const Navbar = () => {
   };
   const handleSearchdrop = () => {
     setSearch(!search);
+    navigate('/allservices')
   };
   
   // theme color toggle 
@@ -103,7 +104,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" py-3  w-full shadow-sm ">
+    <div className=" py-3  w-full shadow-md ">
       <div className=" ">
         <div className="navbar max-w-7xl w-[95%] mx-auto ">
           <div className="navbar-start ">
@@ -256,7 +257,7 @@ const Navbar = () => {
         className={` w-full absolute ${
           search
             ? "-top-72 h-0 delay-300 duration-1000"
-            : "top-0 h-[300px] duration-300"
+            : "top-0 h-[250px] duration-300"
         } min-h-[200px] bg-[#18324B] z-50`}
       >
         <div

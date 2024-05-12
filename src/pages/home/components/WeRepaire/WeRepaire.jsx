@@ -9,11 +9,11 @@ import { SlGameController } from "react-icons/sl";
 const WeRepaire = () => {
   return (
     <div className=" max-w-7xl w-[95%] mx-auto">
-      <div className=" my-12">
+      <div className=" my-16">
       <h2 className=" text-center font-bold font-Roboto text-3xl">WE REPAIRE</h2>
       </div>
       
-      <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 lg:grid-cols-3">
+      <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-16 lg:grid-cols-3">
       
       {/* card star  */}
       <div className=" flex justify-start gap-6">

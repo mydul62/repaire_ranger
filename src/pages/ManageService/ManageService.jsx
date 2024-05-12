@@ -53,6 +53,47 @@ const ManageService = () => {
     });
     
   };
+  
+  const handleUpdate = (e,id)=>{
+    e.preventDefault()
+   const form = e.target;
+   
+   const imgURL = form.imgURL.value;
+   const serviceName = form.serviceName.value;
+   const price = form.price.value;
+   const serviceArea = form.serviceArea.value;
+   const description = form.description.value;
+   const providerEmail =user?.email ;
+   const providerName = user?.displayName;
+   const providerImage = user?.photoURL;
+   
+   const updateInfo = {
+   imgURL,
+    serviceName,
+    price,
+    serviceArea,
+    description,
+    providerEmail,
+    providerImage,
+    providerName
+    
+   }
+   axios.put(`http://localhost:5000/services/update/${id}`, updateInfo)
+  .then(function (response) {
+    Swal.fire({
+      position: "top-center",
+      icon: "success",
+      title: "Service Update SuccessFull",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  console.log(updateInfo,id);
+  }
   return (
     <div className=" max-w-7xl w-[95%] mx-auto my-16">
       <div className="overflow-x-auto">
@@ -98,9 +139,9 @@ const ManageService = () => {
   <div className="modal-box">
 
 
-  <form onSubmit={'handleProductSubmit'} className=" w-[95%] shadow-lg   mx-auto  bg-white  rounded-t-badge ">
+  <form onSubmit={(e)=>handleUpdate(e,data?._id)} className=" w-[95%] shadow-lg   mx-auto  bg-white  rounded-t-badge ">
   <div className=" space-y-6 p-6">
-  <h2 className=" text-3xl py-6 font-semibold font-Rancho text-[#535353] "> Add Service Here</h2>
+  <h2 className=" text-3xl py-6 font-semibold font-Rancho text-[#535353] "> Update Service Here</h2>
       <div className=" flex gap-6">
       <input type="text" placeholder="Image URL" name="imgURL" className="input input-bordered input-md w-full " />
       <input type="text" placeholder="Service Name" name="serviceName" className="input input-bordered input-md w-full " />
@@ -121,7 +162,7 @@ const ManageService = () => {
       </div>
   </div>
       <div className=" flex gap-6">
-      <input type="submit" value={'Add Now'} className="py-3 rounded-none text-white text-xl  bg-green-500 w-full " />
+      <input type="submit" value={'Update Now'} className="py-3 rounded-none text-white text-xl  bg-green-500 w-full " />
       </div>
    </form>
 
