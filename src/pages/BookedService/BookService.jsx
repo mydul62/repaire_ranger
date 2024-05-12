@@ -6,7 +6,7 @@ const BookService = () => {
   const [bookData, setBookData] = useState([]);
   const { user } = useAuth();
   const email = user.email;
-
+  console.log(bookData);
   useEffect(() => {
     const getDataById = async () => {
       const { data } = await axios.get(
@@ -51,7 +51,7 @@ const BookService = () => {
         <div>
           <div className=" gap-8  my-16 space-y-6 ">
             {bookData &&
-              bookData.slice(0, 4).map((data, i) => (
+              bookData.map((data, i) => (
                 <div key={i}>
                   <div className=" flex md:flex-row flex-col h-[120px] justify-center shadow-xl bg-[#eaeaeae3]  rounded-md">
                     <div className="  md:w-[45%] ">
