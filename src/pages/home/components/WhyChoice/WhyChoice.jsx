@@ -14,7 +14,7 @@ const WhyChoice = () => {
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
       
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div data-aos="flip-left" data-aos-duration="2500"  className="  flex justify-start gap-6">
       <img className="h-[295px] w-full" src={'https://i.ibb.co/g3HfWGd/repairman-s-workplace-with-cell-phone-special-tools-desk.jpg'} alt="" />
       </div>
        {/* card end  */}
@@ -48,7 +48,7 @@ const WhyChoice = () => {
       </div>
        {/* card end  */}
         {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div data-aos="flip-right" data-aos-duration="2500" className=" flex justify-start gap-6">
       <img className=" h-[295px] w-full" src={'https://i.ibb.co/82ykpbw/collage-customer-experience-concept.jpg'} alt="" />
       </div>
        {/* card end  */}

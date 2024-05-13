@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DynamicTitle from "../DynamicTitle";
 const BookService = () => {
   const [bookData, setBookData] = useState([]);
   const { user } = useAuth();
@@ -10,7 +11,7 @@ const BookService = () => {
   useEffect(() => {
     const getDataById = async () => {
       const { data } = await axios.get(
-        `http://localhost:5000/services/service/booked-service/${email}`
+        `https://server-omega-dusky.vercel.app/services/service/booked-service/${email}`
       );
 
       setBookData(data);
@@ -21,6 +22,8 @@ const BookService = () => {
   if (!bookData.length > 0) {
     return (
       <div className="flex justify-center items-center min-h-screen">
+         <DynamicTitle title={'Booked-services'}></DynamicTitle>
+
         <div className=" space-y-4  text-center">
           <h3 className=" text-3xl ">You Do Not Booked Yet</h3>
           <div>

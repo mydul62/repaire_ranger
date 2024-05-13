@@ -4,6 +4,7 @@ import { IoEyeOff } from "react-icons/io5";
 import { useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import DynamicTitle from "../DynamicTitle";
 
 
 const Login = () => {
@@ -50,7 +51,8 @@ const handleToggle = ()=>{
 }
   return (
   <div className="my-24">
-    <div className=" grid grid-cols-1 md:grid-cols-2 max-w-7xl gap-6  flex-col justify-center items-center  mx-auto">
+ <DynamicTitle title={'Login'}></DynamicTitle> 
+ <div className=" grid grid-cols-1 md:grid-cols-2 max-w-7xl gap-6  flex-col justify-center items-center  mx-auto">
     
 <div className="w-[90%] md:w-[80%] lg:w-[60%] mx-auto bg-white p-6 rounded-md shadow-md ">
 <form onSubmit={handleLoginWithPass} className="  ">

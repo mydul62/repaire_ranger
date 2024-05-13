@@ -1,3 +1,4 @@
+import DynamicTitle from "../DynamicTitle";
 import Carousel from "./components/Carousel/Carousel";
 import PopularServices from "./components/PopularService/PopularServices";
 import Testimonial from "./components/Testimonial/Testimonial";
@@ -7,6 +8,8 @@ import WhyChoice from "./components/WhyChoice/WhyChoice";
 const Home = () => {
   return (
     <div>
+       <DynamicTitle title={''}></DynamicTitle>
+
       <Carousel></Carousel>
       <WeRepaire></WeRepaire>
       <PopularServices></PopularServices>

@@ -6,6 +6,7 @@ import BookedData from "./BookedData/BookedData";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import DynamicTitle from "../../pages/DynamicTitle";
 // import { commentdata } from "../../../public/commentData";
 const SingleServiceDetails = () => {
   const { id } = useParams();
@@ -26,7 +27,7 @@ const SingleServiceDetails = () => {
     // Replace id with your query parameter name
     const getDataComment =async()=>{
       try {
-        const response = await axios.get(`http://localhost:5000/comments/${id}`);
+        const response = await axios.get(`https://server-omega-dusky.vercel.app/comments/${id}`);
         setComments(response.data);
       } catch (error) {
         console.error('Error fetching comments:', error);
@@ -38,7 +39,7 @@ const SingleServiceDetails = () => {
   const handleSubmitComment = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/comments', { text: newComment, commentID : id});
+      const response = await axios.post('https://server-omega-dusky.vercel.app/comments', { text: newComment, commentID : id});
       setComments([...comments, response.data]);
       setNewComment('');
     } catch (error) {
@@ -49,7 +50,7 @@ const SingleServiceDetails = () => {
 
   const handleSubmitReply = async (commentId, replyText) => {
     try {
-      const response = await axios.post(`http://localhost:5000/comments/${commentId}/replies`, { text: replyText });
+      const response = await axios.post(`https://server-omega-dusky.vercel.app/comments/${commentId}/replies`, { text: replyText });
       const updatedComments = comments.map(comment => {
         if (comment._id === commentId) {
           comment.replies.push(response.data);
@@ -67,7 +68,7 @@ const SingleServiceDetails = () => {
     const getDataById = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/services/${id}`
+          `https://server-omega-dusky.vercel.app/services/${id}`
         );
         setCartInfo(data);
       } catch (error) {
@@ -91,7 +92,7 @@ const SingleServiceDetails = () => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/comments/delete/deleteitem/del/${id}`, {
+          fetch(`https://server-omega-dusky.vercel.app/comments/delete/deleteitem/del/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
@@ -114,6 +115,8 @@ const SingleServiceDetails = () => {
 
   return (
     <div>
+       <DynamicTitle title={'Service-details'}></DynamicTitle>
+
       {cartInfo && (
         <div>
           <div className="relative h-[326px]">

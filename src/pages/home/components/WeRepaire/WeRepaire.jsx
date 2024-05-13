@@ -4,7 +4,9 @@ import { RiComputerLine } from "react-icons/ri";
 import { FiTablet } from "react-icons/fi";
 import { MdOutlinePhotoCamera } from "react-icons/md";
 import { SlGameController } from "react-icons/sl";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 
 const WeRepaire = () => {
   return (
@@ -16,7 +18,7 @@ const WeRepaire = () => {
       <div className=" grid grid-cols-1 md:grid-cols-2 gap-8 gap-y-16 lg:grid-cols-3">
       
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div  data-aos="flip-left" className=" flex justify-start gap-6">
       <div>
       <CiMobile1 size={60} color="red" />
       </div>
@@ -27,7 +29,7 @@ const WeRepaire = () => {
       </div>
        {/* card end  */}
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div  data-aos="flip-left" className=" flex justify-start gap-6">
       <div>
       <BsCameraReels size={55} color="red" />
       </div>
@@ -39,7 +41,7 @@ const WeRepaire = () => {
       </div>
        {/* card end  */}
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div  data-aos="flip-left" className=" flex justify-start gap-6">
       <div>
       <RiComputerLine size={55} color="red" />
       </div>
@@ -50,7 +52,7 @@ const WeRepaire = () => {
       </div>
        {/* card end  */}
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div  data-aos="flip-left" className=" flex justify-start gap-6">
       <div>
       <FiTablet size={55} color="red" />
       </div>
@@ -61,7 +63,7 @@ const WeRepaire = () => {
       </div>
        {/* card end  */}
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div  data-aos="flip-left" className=" flex justify-start gap-6">
       <div>
       <MdOutlinePhotoCamera size={55} color="red" />
       </div>
@@ -73,7 +75,7 @@ const WeRepaire = () => {
       </div>
        {/* card end  */}
       {/* card star  */}
-      <div className=" flex justify-start gap-6">
+      <div  data-aos="flip-left" className=" flex justify-start gap-6">
       <div>
       <SlGameController size={55} color="red" />
       </div>

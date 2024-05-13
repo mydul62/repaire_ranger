@@ -10,7 +10,7 @@ export const SearchProvider = ({ children }) => {
 const handleSearch = async (searchQuery) => {
 
       if(searchQuery){
-        const { data } = await axios.get(`http://localhost:5000/services/search-datas/search-data/data?search=${searchQuery}`);
+        const { data } = await axios.get(`https://server-omega-dusky.vercel.app/services/search-datas/search-data/data?search=${searchQuery}`);
         setSearchResults(data);
       }
  

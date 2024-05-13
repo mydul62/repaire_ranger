@@ -1,6 +1,7 @@
 import useAuth from "../../Hooks/useAuth";
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import DynamicTitle from "../DynamicTitle";
 
 const AddService = () => {
  const  {user}=useAuth()
@@ -29,7 +30,7 @@ const AddService = () => {
     providerName
     
    }
-   axios.post('http://localhost:5000/services', serviceInfo)
+   axios.post('https://server-omega-dusky.vercel.app/services', serviceInfo)
   .then(function (response) {
     Swal.fire({
       position: "top-center",
@@ -48,6 +49,7 @@ const AddService = () => {
   return (
     <div className="flex flex-col py-16 justify-center items-center bg-[#f0f2f5]">
    <form onSubmit={handleProductSubmit} className=" w-[95%] shadow-lg  md:w-[40%] mx-auto  bg-white  rounded-t-badge ">
+   <DynamicTitle title={'add-service'}></DynamicTitle>
   <div className=" space-y-6 p-6">
   <h2 className=" text-3xl py-6 font-semibold font-Rancho text-[#535353] "> Add Service Here</h2>
       <div className=" flex gap-6">

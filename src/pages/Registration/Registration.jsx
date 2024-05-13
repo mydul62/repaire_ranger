@@ -3,6 +3,7 @@ import useAuth from "../../Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../../Firebase/firebase-config";
 import toast from "react-hot-toast";
+import DynamicTitle from "../DynamicTitle";
 
 const Registration = () => {
   const { registerWithPassword } = useAuth();
@@ -40,10 +41,12 @@ const Registration = () => {
 
   return (
     <div className=" ">
-      <div className=" grid grid-cols-2 max-w-7xl  flex-col justify-center items-center  min-h-screen mx-auto">
+          <DynamicTitle title={'Registration'}></DynamicTitle>
+      <div className=" grid grid-cols-1 md:grid-cols-2 max-w-7xl  flex-col justify-center items-center  min-h-screen mx-auto">
+
         <form
           onSubmit={handleLoginWithPass}
-          className="w-[60%] mx-auto bg-white p-6 shadow-md rounded-md"
+          className="w-[90%] md:w-[60%] mx-auto bg-white p-6 shadow-md rounded-md"
         >
           <h2 className=" text-3xl text-center my-4 font-bold font-Roboto">
             Register Now

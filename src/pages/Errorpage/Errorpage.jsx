@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import DynamicTitle from "../DynamicTitle";
 const Errorpage = () => {
   return (
     <div className="relative py-16 px-4 w-full min-h-screen bg-gray-50">
     <div className="flex flex-col items-center">
+    <DynamicTitle title={'Error-page'}></DynamicTitle>
 
       <div className="text-center space-y-5">
         <p className="text-6xl sm:text-7xl text-purple-500 font-bold tracking-wide">404</p>

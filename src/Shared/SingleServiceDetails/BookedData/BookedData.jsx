@@ -34,7 +34,7 @@ const BookedData = ({cartInfo}) => {
       instructions,
       status,
     };
-    axios.post('http://localhost:5000/services/service/booked-service', updateInfo)
+    axios.post('https://server-omega-dusky.vercel.app/services/service/booked-service', updateInfo)
     .then(function (response) {
       Swal.fire({
         position: "top-end",

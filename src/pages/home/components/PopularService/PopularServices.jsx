@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
+import { SlGameController } from "react-icons/sl";
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 const PopularServices = () => {
 const [datas,setDatas]=useState([])
   useEffect(()=>{
-    axios.get('http://localhost:5000/services')
+    axios.get('https://server-omega-dusky.vercel.app/services')
   .then(function (response) {
     // handle success
     setDatas(response.data)
@@ -31,7 +33,8 @@ const [datas,setDatas]=useState([])
       {
      datas && datas.slice(0,4).map((data,i)=>(
         <div key={i}>
-        <div className=" flex md:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
+        <div data-aos="fade-up"
+     data-aos-duration="1000" className=" flex md:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
           <div className=" md:w-[45%]  ">
             <img src={data?.imgURL} className="  rounded-l-md w-full h-[215px]" alt="Movie" />
           </div>{" "}

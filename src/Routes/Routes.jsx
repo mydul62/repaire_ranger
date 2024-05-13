@@ -13,6 +13,7 @@ import Registration from "../pages/Registration/Registration";
 import PriveteRoutes from "./PriveteRoutes";
 import SingleServiceDetails from "../Shared/SingleServiceDetails/SingleServiceDetails";
 import Errorpage from "../pages/Errorpage/Errorpage";
+import UpdatedServiceData from "../pages/ManageService/UpdateServiceData/UpdatedServiceData";
 
 export const router =createBrowserRouter([
 {
@@ -56,6 +57,10 @@ children:[
 {
   path:'/singleservicedetails/:id',
   element:<PriveteRoutes><SingleServiceDetails></SingleServiceDetails></PriveteRoutes>
+},
+{
+path:'/updatedservicedata/:id',
+element:<UpdatedServiceData></UpdatedServiceData>
 }
 ]
 }

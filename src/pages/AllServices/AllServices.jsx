@@ -3,18 +3,20 @@ import axios from 'axios';
 import { useSearch } from "../../Hooks/SearchProvider";
 import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
+import DynamicTitle from "../DynamicTitle";
 
 const AllServices = () => {
   const [datas, setDatas] = useState([]);
   const { searchResults } = useSearch();
-  const [itemPerPage, setItemPerPage] = useState(2);
+  const [itemPerPage, setItemPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
   const [count, setCount] = useState(0);
+  const [loading,setLoading]=useState(true)
   const numbeOfpages = Math.ceil(count /itemPerPage)
    const pages = [...Array(numbeOfpages).keys()]
   useEffect(() => {
     const getServiceData = async () => {
-      const { data } = await axios.get(`http://localhost:5000/all-servicefilter?page=${currentPage}&size=${itemPerPage}`);
+      const { data } = await axios.get(`https://server-omega-dusky.vercel.app/all-servicefilter?page=${currentPage}&size=${itemPerPage}`);
       setDatas(data);
     }
     getServiceData();
@@ -22,7 +24,7 @@ const AllServices = () => {
 
   useEffect(() => {
     const getCount = async () => {
-      const { data } = await axios.get('http://localhost:5000/service/services-count');
+      const { data } = await axios.get('https://server-omega-dusky.vercel.app/service/services-count');
       setCount(data.count);
     }
     getCount();
@@ -42,6 +44,8 @@ const AllServices = () => {
 
   return (
     <div className="max-w-7xl mx-auto my-16">
+       <DynamicTitle title={'All-services'}></DynamicTitle>
+
       <div className="md:w-[50%] mx-auto flex justify-center">
         <h1 className="text-center text-3xl md:text-4xl border-b-4 pb-3 border-green-100 inline-block font-semibold font-Rancho">
           Our All Services
