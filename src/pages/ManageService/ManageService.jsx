@@ -4,6 +4,7 @@ import  axios  from 'axios';
 import { BsPen } from "react-icons/bs";
 import { AiTwotoneDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageService = () => {
   const [cartInfo,setCardInfo]=useState([])
@@ -98,6 +99,21 @@ const ManageService = () => {
   });
   console.log(updateInfo,id);
   }
+  
+  if (!cartInfo.length > 0) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className=" space-y-4  text-center">
+          <h3 className=" text-3xl ">You Do Not Added Service</h3>
+          <div>
+          <Link to={'/addservice'}>
+            <button className=" btn text-xl font-Roboto bg-green-400">Add Service</button>
+          </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className=" max-w-7xl w-[95%] mx-auto my-16">
       <div className="overflow-x-auto">
@@ -147,22 +163,22 @@ const ManageService = () => {
   <div className=" space-y-6 p-6">
   <h2 className=" text-3xl py-6 font-semibold font-Rancho text-[#535353] "> Update Service Here</h2>
       <div className=" flex gap-6">
-      <input type="text" placeholder="Image URL" name="imgURL" className="input input-bordered input-md w-full " />
-      <input type="text" placeholder="Service Name" name="serviceName" className="input input-bordered input-md w-full " />
+      <input type="text" placeholder="Image URL" name="imgURL" defaultValue={data?.imgURL} className="input input-bordered input-md w-full " />
+      <input type="text" placeholder="Service Name" defaultValue={data?.serviceName} name="serviceName" className="input input-bordered input-md w-full " />
       </div>
       <div className=" flex gap-6">
-      <input type="text" placeholder="Price" name="price" className="input input-bordered input-md w-full " />
-      <input type="text" placeholder="Service Area" name="serviceArea" className="input input-bordered input-md w-full " />
+      <input type="text" placeholder="Price" name="price" defaultValue={data?.price} className="input input-bordered input-md w-full " />
+      <input type="text" placeholder="Service Area" defaultValue={data?.serviceArea} name="serviceArea" className="input input-bordered input-md w-full " />
       </div>
       <div className=" flex gap-6">
-      <input type="text" readOnly defaultValue={`${user?.email?user.email:'No user Available'}`} placeholder='Provider Email' name="providerEmail" className="input input-bordered input-md w-full " />
-      <input type="text" readOnly name="providerName" defaultValue={`${user?.displayName?user.displayName:'No user Available'}`}  placeholder='Provider Name' className="input input-bordered input-md w-full " />
+      <input type="text" readOnly value={`${user?.email?user.email:'No user Available'}`} placeholder='Provider Email' name="providerEmail" className="input input-bordered input-md w-full " />
+      <input type="text" readOnly name="providerName" value={`${user?.displayName?user.displayName:'No user Available'}`}  placeholder='Provider Name' className="input input-bordered input-md w-full " />
       </div>
       <div className=" flex gap-6">
-      <input type="text" name="providerImage" defaultValue={`${user?.photoURL?user.photoURL:'No user Available'}`} readOnly placeholder='' className="input input-bordered input-md w-full " />
+      <input type="text" name="providerImage" value={`${user?.photoURL?user.photoURL:'No user Available'}`} readOnly placeholder='' className="input input-bordered input-md w-full " />
       </div>
       <div className=" flex gap-6">
-      <input type="text" placeholder="Description" name="description" className="input py-10 input-bordered input-md w-full " />
+      <input type="text" placeholder="Description" defaultValue={data.description} name="description" className="input h-24 input-bordered input-md w-full " />
       </div>
   </div>
       <div className=" flex gap-6">
