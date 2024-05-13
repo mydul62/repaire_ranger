@@ -72,7 +72,7 @@ const Navbar = () => {
       <ul
         className={`p-2 absolute  z-40  ${
           drop ? "block duration-1000 bg-white shadow-md " : "hidden"
-        }  flex flex-col gap-3 bg-slate-100 px-8  rounded-sm *:border-b *:py-3`}
+        }  flex flex-col gap-3  px-8  rounded-md bg-[#9c9191] *:border-b *:py-3`}
       >
         <li>
           <NavLink to={"/addservice"}>Add Service</NavLink>
@@ -104,7 +104,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" py-3  w-full shadow-md ">
+    <div className=" relative   py-3  w-full shadow-md ">
       <div className=" ">
         <div className="navbar max-w-7xl w-[95%] mx-auto ">
           <div className="navbar-start ">
@@ -201,16 +201,48 @@ const Navbar = () => {
 
         <div className=" flex justify-center  shadow-inne"></div>
       </div>
-
       <div
-        className={`absolute top-15 ${
-          show
-            ? "right-0 flex  duration-500"
-            : "-right-80 absolute  duration-500"
-        } z-40 mt-4 lg:hidden block `}
+        className={` w-full absolute ${
+          search
+            ? "-top-72 h-0 delay-300 duration-1000"
+            : "top-0 h-[250px] duration-300"
+        } min-h-[200px] bg-[#18324B] z-50`}
+      >
+        <div
+          onClick={() => handleSearchdrop(setSearch(false))}
+          className=" flex py-4 justify-between mx-12 my-4"
+        >
+          <h2>
+            {" "}
+            <a className=" text-3xl text-[#535353] font-bold">
+              Repair<span className=" text-green-500">Ranger</span>
+            </a>
+          </h2>
+          <h2 className=" text-white border-2 rounded-full p-1  font-bold">
+            <RxCross1 size={30} />
+          </h2>
+        </div>
+
+        <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-12">
+        
+         <div className=" flex ">
+         <input onChange={onSearch}
+            type="text"
+            placeholder="Type Words"
+            className=" bg-transparent text-white font-bold text-2xl    outline-none   w-full py-4 "
+          /> 
+         </div>
+          <div
+            className={` float-left h-[1px] bg-[#82738e] ${
+              search ? "w-0 duration-300" : "w-full duration-1000"
+            } `}
+          ></div>
+        </div>
+      </div>
+      <div className={`absolute z-40 md:hidden  w-full ${show?'top-20 duration-500':'-top-96 duration-500'}`}
       >
         
-        <ul className=" flex flex-col pb-20 text-2xl  border-2 border-green-400 rounded-md px-8 pr-16 md:pt-8 pt-0 gap-8 text-[#010101] bg-[#eaeaea] ">
+        <ul className=" flex flex-col pb-20 text-2xl  border-2 border-green-400 rounded-md px-8 pr-16 md:pt-8 pt-3 gap-8 text-[#010101] bg-[#eaeaea] ">
         <div className=" flex md:hidden  gap-3 items-center">
         <div
               onClick={handleToggle}
@@ -251,45 +283,6 @@ const Navbar = () => {
         </div>
           {navlist} 
         </ul>
-      </div>
-
-      <div
-        className={` w-full absolute ${
-          search
-            ? "-top-72 h-0 delay-300 duration-1000"
-            : "top-0 h-[250px] duration-300"
-        } min-h-[200px] bg-[#18324B] z-50`}
-      >
-        <div
-          onClick={() => handleSearchdrop(setSearch(false))}
-          className=" flex py-4 justify-between mx-12 my-4"
-        >
-          <h2>
-            {" "}
-            <a className=" text-3xl text-[#535353] font-bold">
-              Repair<span className=" text-green-500">Ranger</span>
-            </a>
-          </h2>
-          <h2 className=" text-white border-2 rounded-full p-1  font-bold">
-            <RxCross1 size={30} />
-          </h2>
-        </div>
-
-        <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-12">
-        
-         <div className=" flex ">
-         <input onChange={onSearch}
-            type="text"
-            placeholder="Type Words"
-            className=" bg-transparent text-white font-bold text-2xl    outline-none   w-full py-4 "
-          /> 
-         </div>
-          <div
-            className={` float-left h-[1px] bg-[#82738e] ${
-              search ? "w-0 duration-300" : "w-full duration-1000"
-            } `}
-          ></div>
-        </div>
       </div>
     </div>
   );

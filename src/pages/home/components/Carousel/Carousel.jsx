@@ -31,20 +31,18 @@ export default function App() {
         <SwiperSlide>
           <div className="relative">
             <img
-              src="https://i.ibb.co/1M5tMqD/pexels-prateekkatyal-2740956.jpg"
+              src="https://i.ibb.co/VDBsb7j/technician-8326389-1280.jpg"
               alt=""
               className=" h-[700px] w-full "
             />
-            <div className="  left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
-              <div className=" max-w-7xl w-[95%] mx-auto">
-                <div className=" md:w-[60%] space-y-6">
-                  <h2 className=" text-3xl md:text-4xl  font-Rancho">
-                    WE ALWAYS ENSURE THE BEST SERVICE
+            <div className="   left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+              <div className=" max-w-7xl w-[90%] mx-auto">
+                <div className="w-full md:w-[70%]  space-y-6">
+                  <h2 className=" text-3xl md:text-4xl uppercase  font-Rancho">
+                  Restore. Repair. Renew. Repaireranger Does It All.
                   </h2>
                   <p className=" ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Mollitia, voluptates ut. Quas pariatur vitae praesentium,
-                    deserunt
+                  Unlock Peak Performance for Your Devices: Mobiles, Computers, Printers. Rely on Repaireranger's Expertise for Swift, Reliable Repairs and Superior Functionality.
                   </p>
                   <div>
                     <Link to={"/allservices"}>
@@ -71,9 +69,7 @@ export default function App() {
                     WE ALWAYS ENSURE THE BEST SERVICE
                   </h2>
                   <p className=" ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Mollitia, voluptates ut. Quas pariatur vitae praesentium,
-                    deserunt 
+                  Experience Seamless Device Restoration: Mobiles, Computers, Printers. Trust Repaireranger for Reliable Solutions, Enhancing Your Tech Experience
                   </p>
                   <div>
                     <Link to={"/allservices"}>
@@ -95,14 +91,12 @@ export default function App() {
             />
             <div className=" left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
               <div className=" flex justify-end max-w-7xl mx-auto">
-                <div className=" float-right text-right   space-y-6">
-                  <h2 className=" text-3xl font-Rancho">
-                    WE ALWAYS ENSURE THE BEST SERVICE
+                <div className=" w-[80%]  float-right text-right   space-y-6">
+                  <h2 className=" uppercase text-3xl font-Rancho">
+                  Tech Troubles? Trust Repaireranger for Solutions
                   </h2>
                   <p className="  ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Mollitia, voluptates ut. Quas pariatur vitae praesentium,
-                    deserunt 
+                  Revitalize Your Tech Arsenal with Repaireranger: Mobiles, Computers, Printers. Expert Repairs Ensuring Optimal Performance and Longevity.
                   </p>
                   <div>
                     <Link to={"/allservices"}>

@@ -45,6 +45,7 @@ const SingleServiceDetails = () => {
     } catch (error) {
       console.error('Error submitting comment:', error);
     }
+    e.target.reset()
     getDataComment()
   };
 
@@ -192,14 +193,17 @@ const SingleServiceDetails = () => {
               <Comments key={commentInfo.id} commentInfo={commentInfo} ></Comments> */}
                <div>
       <h1 className=" text-xl font-medium">Comments</h1>
-      <form className=" flex items-center" onSubmit={handleSubmitComment}>
+      <form className=" " onSubmit={handleSubmitComment}>
         <input
-          type="text" className=" input-lg border-2 rounded-md w-full"
+          type="text" className=" input-lg border-2 border-[#cb3ff2] rounded-md w-full"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           placeholder="Type your comment here"
         />
-        <button type="submit " className="btn btn-sm bg-green-500">Comment</button>
+       {
+       newComment &&  <button type="submit "  className={`btn btn-sm mt-2  h-full btn-outline border-[#7C3FF2] border`}>Comment</button>
+       
+       }
         
       </form>
       <ul className="">

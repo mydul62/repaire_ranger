@@ -4,6 +4,7 @@ import { useSearch } from "../../Hooks/SearchProvider";
 import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
 import DynamicTitle from "../DynamicTitle";
+import { Link } from "react-router-dom";
 
 const AllServices = () => {
   const [datas, setDatas] = useState([]);
@@ -11,7 +12,7 @@ const AllServices = () => {
   const [itemPerPage, setItemPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
   const [count, setCount] = useState(0);
-  const [loading,setLoading]=useState(true)
+  // const [loading,setLoading]=useState(true)
   const numbeOfpages = Math.ceil(count /itemPerPage)
    const pages = [...Array(numbeOfpages).keys()]
   useEffect(() => {
@@ -56,7 +57,7 @@ const AllServices = () => {
           <div key={i} className="w-[95%] md:w-[80%] lg:w-[70%] mx-auto">
             <div className="flex flex-col mx-auto rounded-lg shadow-md overflow-hidden">
               <img src={data?.imgURL} className="object-cover w-full h-64" alt="Service" />
-              <div className=" p-6">
+              <div className=" p-6 bg-[#7b3ff20e]">
                 <div className="flex items-center">
                   <img src={data?.providerImage} className="w-10 h-10 rounded-full mr-4" alt="User" />
                   <div>
@@ -67,9 +68,9 @@ const AllServices = () => {
                 <p className="mt-4 mb-3 ">{data?.description.slice(0, 100)}</p>
                 <hr />
                 <div className="flex justify-between items-center mt-3">
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                 <Link to={`/singleservicedetails/${data?._id}`}> <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
                     View Details
-                  </button>
+                  </button></Link>
                   <span className=""><span className="font-semibold">Price</span>: ${data?.price}</span>
                   <span className=""><span className="font-semibold">Location</span>: {data?.serviceArea}</span>
                 </div>

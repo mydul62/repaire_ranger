@@ -47,9 +47,9 @@ const [datas,setDatas]=useState([])
             </div>
             <p className=" ">{data?.description.slice(0,100)}...</p>
             
-            <div className=" flex  items-center justify-between border-t-2 border-dashed pt-4">
-            <div className="h-9 w-9 ">
-            <img src={data?.providerImage} alt="" />
+            <div className=" flex  items-center justify-between border-t border-dashed pt-4">
+            <div className="h-9 w-9 rounded-full">
+            <img className=" rounded-full" src={data?.providerImage} alt="" />
             </div>
             <h2>{data?.providerName}</h2>
             <div className="card-actions justify-end ">
