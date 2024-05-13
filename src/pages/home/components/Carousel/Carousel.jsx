@@ -93,9 +93,9 @@ export default function App() {
               alt=""
               className=" h-[700px] w-full "
             />
-            <div className=" pr-4 left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+            <div className=" left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
               <div className=" flex justify-end max-w-7xl mx-auto">
-                <div className=" md:w-[60%] text-right float-right  space-y-6">
+                <div className=" float-right text-right   space-y-6">
                   <h2 className=" text-3xl font-Rancho">
                     WE ALWAYS ENSURE THE BEST SERVICE
                   </h2>

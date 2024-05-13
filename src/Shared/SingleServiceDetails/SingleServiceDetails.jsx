@@ -5,6 +5,7 @@ import axios from "axios";
 import BookedData from "./BookedData/BookedData";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useQuery } from "@tanstack/react-query";
 // import { commentdata } from "../../../public/commentData";
 const SingleServiceDetails = () => {
   const { id } = useParams();
@@ -12,19 +13,28 @@ const SingleServiceDetails = () => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
   
-  useEffect(() => {
-    // Replace id with your query parameter name
-    axios.get(`http://localhost:5000/comments/${id}`)
-      .then(response => {
-        setComments(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching comments:', error);
-      });
-  }, []);
   
-  console.log(comments);
+  const {data,isLoading,refetch,isError,error}=useQuery({
+  queryFn:()=>{},
+  queryKey:['']
+  })
+  
+  useEffect(()=>{
+    getDataComment()
+  },[])
 
+    // Replace id with your query parameter name
+    const getDataComment =async()=>{
+      try {
+        const response = await axios.get(`http://localhost:5000/comments/${id}`);
+        setComments(response.data);
+      } catch (error) {
+        console.error('Error fetching comments:', error);
+      }
+    }
+    
+   
+  
   const handleSubmitComment = async (e) => {
     e.preventDefault();
     try {
@@ -34,10 +44,10 @@ const SingleServiceDetails = () => {
     } catch (error) {
       console.error('Error submitting comment:', error);
     }
+    getDataComment()
   };
 
   const handleSubmitReply = async (commentId, replyText) => {
-  console.log(commentId, replyText)
     try {
       const response = await axios.post(`http://localhost:5000/comments/${commentId}/replies`, { text: replyText });
       const updatedComments = comments.map(comment => {
@@ -50,7 +60,7 @@ const SingleServiceDetails = () => {
     } catch (error) {
       console.error('Error submitting reply:', error);
     }
-
+    getDataComment()
   };
  
    useEffect(() => {

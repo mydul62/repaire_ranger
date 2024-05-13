@@ -7,19 +7,20 @@ import { RiSearchLine } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
 import { MdDarkMode } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
-
+import { useSearch } from "../../../Hooks/SearchProvider";
 const Navbar = () => {
   const [drop, setDrop] = useState(false);
   const { user, logout } = useAuth();
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState(true);
   const [theme, setTheme] = useState(false);
-  const [searchData,setSearchData]=useState('')
+  // const [searchData,setSearchData]=useState('')
   const navigate = useNavigate()
+  const { handleSearch } = useSearch();
+  // const [searchQuery, setSearchQuery] = useState('');
   const handleLogOut = () => {
     logout();
   };
-
   const handleDropDrown = () => {
     setDrop(!drop);
   };
@@ -46,12 +47,11 @@ const Navbar = () => {
     htmlElement.setAttribute("data-theme", theme ? "night" : "light");
   }, [theme]);
 
-  const handleSearch = (e)=>{
-    // e.prevemtDefault()
-    const dataValue = e.target.value;
-    setSearchData(dataValue)
-  }
-  console.log(searchData);
+  const onSearch =(e) => {
+    handleSearch(e.target.value);
+    
+  };
+
   const navlist = (
     <>
       <li>
@@ -276,11 +276,14 @@ const Navbar = () => {
         </div>
 
         <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-12">
-          <input  onChange={handleSearch}
+        
+         <div className=" flex ">
+         <input onChange={onSearch}
             type="text"
             placeholder="Type Words"
-            className=" bg-transparent text-white font-bold text-2xl uppercase   outline-none   w-full py-4 "
-          />
+            className=" bg-transparent text-white font-bold text-2xl    outline-none   w-full py-4 "
+          /> 
+         </div>
           <div
             className={` float-left h-[1px] bg-[#82738e] ${
               search ? "w-0 duration-300" : "w-full duration-1000"

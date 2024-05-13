@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from 'axios';
+import { useSearch } from "../../Hooks/SearchProvider";
 
 const AllServices = () => {
 const [datas,setDatas]=useState([])
+const { searchResults } = useSearch();
+console.log(searchResults);
   useEffect(()=>{
-    axios.get('http://localhost:5000/services')
+    axios.get('http://localhost:5000/services/')
   .then(function (response) {
     // handle success
     setDatas(response.data)
@@ -18,6 +21,11 @@ const [datas,setDatas]=useState([])
     // always executed
   });
   },[])
+  
+  
+  useEffect(()=>{
+  setDatas(searchResults)
+  },[searchResults])
   return (
     <div className="max-w-7xl mx-auto my-16">
       <div className="md:w-[50%] mx-auto flex justify-center">

@@ -8,6 +8,10 @@ import Swal from "sweetalert2";
 const ManageService = () => {
   const [cartInfo,setCardInfo]=useState([])
   const {user}=useAuth()
+  
+  
+  
+  
   const email = user.email;
   
   useEffect(() => {
