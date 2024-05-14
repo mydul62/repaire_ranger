@@ -5,28 +5,32 @@ import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
 import DynamicTitle from "../DynamicTitle";
 import { Link } from "react-router-dom";
-
+  import loadingImg from "/food-street3.gif"
 const AllServices = () => {
   const [datas, setDatas] = useState([]);
   const { searchResults } = useSearch();
   const [itemPerPage, setItemPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
   const [count, setCount] = useState(0);
-  // const [loading,setLoading]=useState(true)
+  const [loading,setLoading]=useState(true)
   const numbeOfpages = Math.ceil(count /itemPerPage)
    const pages = [...Array(numbeOfpages).keys()]
   useEffect(() => {
     const getServiceData = async () => {
+     setLoading(true)
       const { data } = await axios.get(`https://server-omega-dusky.vercel.app/all-servicefilter?page=${currentPage}&size=${itemPerPage}`);
       setDatas(data);
+      setLoading(false)
     }
     getServiceData();
   }, [currentPage, itemPerPage]);
 
   useEffect(() => {
     const getCount = async () => {
+    setLoading(true)
       const { data } = await axios.get('https://server-omega-dusky.vercel.app/service/services-count');
       setCount(data.count);
+      setLoading(false)
     }
     getCount();
   }, []);
@@ -42,7 +46,13 @@ const AllServices = () => {
   const handleNextPage = () => {
     setCurrentPage(prevPage => prevPage + 1);
   };
+  if(loading){
+  return <div className=" flex justify-center mt-36">
+     <div className="h-[400px] w-[600px]" style={{ background: `url(https://cdn.dribbble.com/users/1147690/screenshots/6386072/food-street3.gif)` }}>
+</div>
 
+  </div>
+  }
   return (
     <div className="max-w-7xl mx-auto my-16">
        <DynamicTitle title={'All-services'}></DynamicTitle>
