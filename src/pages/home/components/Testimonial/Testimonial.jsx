@@ -15,7 +15,7 @@ export default function Testimonial() {
       <div className="  bg-no-repeat bg-cover py-32">
         <div className="max-w-6xl w-[90%] mx-auto ">
           <div className=" pb-8">
-            <h2 className=" text-3xl font-medium font-Rancho ">Testimonial</h2>
+            <h2 className=" text-3xl font-medium font-Rancho ">Testi<span className=" text-green-400">monial</span></h2>
           </div>
           <Swiper
             slidesPerView={2}
@@ -34,7 +34,7 @@ export default function Testimonial() {
               <div className="space-y-3">
                 <h2 className="font-Roboto text-xl  font-medium">Sadia Rahman</h2>
                 <p className="font-Rancho">
-                  I'm delighted that [Your Company Name] has repaired my laptop
+                  I'm delighted that repaire-ranger has repaired my laptop
                   quickly and skillfully. They were very efficient and
                   well-organized. Thank you!
                 </p>
@@ -45,7 +45,7 @@ export default function Testimonial() {
               <div className="space-y-3">
                 <h2 className="font-Roboto text-xl font-medium">Rahim Islam</h2>
                 <p className="font-Rancho">
-                  I'm so pleased with [Your Company Name] for fixing my laptop
+                  I'm so pleased with repaire-ranger for fixing my laptop
                   without any hassle. Their team's management was excellent, and
                   the expertise was top-notch. Thank you, no waiting!
                 </p>
@@ -67,7 +67,7 @@ export default function Testimonial() {
               <div className="space-y-3">
                 <h2 className="font-Roboto text-xl font-medium">Aminul Haque</h2>
                 <p className="font-Rancho">
-                  Kudos to [Your Company Name] for their exceptional laptop
+                  Kudos to repaire-ranger for their exceptional laptop
                   repair service. They exceeded my expectations with their
                   efficiency and expertise. I'll definitely be a returning
                   customer.
@@ -79,7 +79,7 @@ export default function Testimonial() {
               <div className="space-y-3">
                 <h2 className="font-Roboto text-xl font-medium">Tasnim Ahmed</h2>
                 <p className="font-Rancho">
-                  I'm grateful to [Your Company Name] for fixing my laptop
+                  I'm grateful to repaire-ranger for fixing my laptop
                   quickly and effectively. Their team was friendly and
                   professional throughout the process. Highly recommended!
                 </p>
@@ -90,7 +90,7 @@ export default function Testimonial() {
               <div className="space-y-3">
                 <h2 className="font-Roboto text-xl font-medium">Farhana Akter</h2>
                 <p className="font-Rancho">
-                  I had a wonderful experience with [Your Company Name]. They
+                  I had a wonderful experience with repaire-ranger. They
                   repaired my laptop with precision and care. Their customer
                   service was excellent. Thank you!
                 </p>

@@ -66,11 +66,11 @@ useEffect(() => {
   
   return (
     <div className=" max-w-7xl mx-auto my-24 fle justify-center items-center">
-    <div className=" w-[70%] mx-auto">
+    <div className=" w-[95%] md:w-[70%] mx-auto">
     <form onSubmit={(e)=>handleUpdate(e)} className=" w-[95%] shadow-lg   mx-auto  bg-white  rounded-t-badge ">
   <div className=" space-y-6 p-6">
   <h2 className=" text-3xl py-6 font-semibold font-Rancho text-[#535353] "> Update Service Here</h2>
-      <div className=" flex gap-6">
+      <div className="block md:flex gap-6">
       <input type="text" placeholder="Image URL" name="imgURL" defaultValue={data?.imgURL} className="input input-bordered input-md w-full " />
       <input type="text" placeholder="Service Name" defaultValue={data?.serviceName} name="serviceName" className="input input-bordered input-md w-full " />
       </div>

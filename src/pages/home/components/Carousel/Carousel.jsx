@@ -82,21 +82,22 @@ export default function App() {
             </div>
           </div>
         </SwiperSlide>
+    
         <SwiperSlide>
           <div className="relative">
             <img
-              src="https://i.ibb.co/0Jfq4cD/close-up-hands-working-with-tools.jpg"
+               src="https://i.ibb.co/0Jfq4cD/close-up-hands-working-with-tools.jpg"
               alt=""
               className=" h-[700px] w-full "
             />
-            <div className=" left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
-              <div className=" flex justify-end max-w-7xl mx-auto">
-                <div className=" w-[80%]  float-right text-right   space-y-6">
-                  <h2 className=" uppercase text-3xl font-Rancho">
-                  Tech Troubles? Trust Repaireranger for Solutions
+            <div className="   left-0 top-0 bottom-0  right-0 absolute inset-1 bg-[#040108b8] flex  items-center text-white">
+              <div className=" max-w-7xl w-[90%] flex justify-end mx-auto">
+                <div className="w-full md:w-[70%] text-right  space-y-6">
+                  <h2 className=" text-3xl md:text-4xl uppercase  font-Rancho">
+                  Restore. Repair. Renew. Repaireranger Does It All.
                   </h2>
-                  <p className="  ">
-                  Revitalize Your Tech Arsenal with Repaireranger: Mobiles, Computers, Printers. Expert Repairs Ensuring Optimal Performance and Longevity.
+                  <p className=" ">
+                  Unlock Peak Performance for Your Devices: Mobiles, Computers, Printers. Rely on Repaireranger's Expertise for Swift, Reliable Repairs and Superior Functionality.
                   </p>
                   <div>
                     <Link to={"/allservices"}>
@@ -109,7 +110,6 @@ export default function App() {
             </div>
           </div>
         </SwiperSlide>
-
       </Swiper>
     </>
   );

@@ -56,9 +56,7 @@ const BookedData = ({cartInfo}) => {
   return (
     <div>
       <div className="space-y-4">
-                  <h2 className="text-[#010101] font-Roboto">
-                    <span className="font-medium">Service Price:</span> ${'cartInfo.price'}{" "}
-                  </h2>
+              
                   <button
                     className="btn bg-green-500"
                     onClick={() => document.getElementById("my_modal_5").showModal()}

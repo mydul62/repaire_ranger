@@ -9,7 +9,7 @@ const Footer = () => {
      <div className="max-w-7xl w-[90%] mx-auto">
      <div className=" flex gap-8 justify-between flex-wrap ">
 <div>
-<h2> <a className=" text-3xl text-[#535353] font-bold">Repair<span className=" text-green-500">Ranger</span></a></h2>
+<h2> <a className=" text-3xl text-white  font-bold">Repair<span className=" text-green-500">Ranger</span></a></h2>
 </div>
 <div className=" text-white space-y-6">
 <h2 className=" text-xl font-semibold">Office</h2>

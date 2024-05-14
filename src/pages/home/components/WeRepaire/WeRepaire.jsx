@@ -6,9 +6,14 @@ import { MdOutlinePhotoCamera } from "react-icons/md";
 import { SlGameController } from "react-icons/sl";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
+import { useEffect, useState } from "react";
 AOS.init();
 
+
 const WeRepaire = () => {
+
+
+console.log();
   return (
     <div className=" max-w-7xl w-[95%] mx-auto">
       <div className=" my-16">
@@ -24,7 +29,8 @@ const WeRepaire = () => {
       </div>
       <div className=" space-y-4">
       <h2 className="  font-bold font-Roboto">MOBILE PHONES</h2>
-      <p className=" w-[80%]">Suspendisse potenti. Nunc dapibus nibh justo, facilisis sagittis eros sollicitudin posuere.</p>
+      <p className=" w-[95%] md:w-[80%]">Restore connectivity and functionality to your mobile devices. Expert repairs ensure seamless communication and uninterrupted access to your digital world.
+</p>
       </div>
       </div>
        {/* card end  */}
@@ -36,7 +42,7 @@ const WeRepaire = () => {
       <div className=" space-y-4">
       <h2 className="  font-bold font-Roboto">VIDEO CAMERAS
 </h2>
-      <p className=" w-[80%]">Suspendisse potenti. Nunc dapibus nibh justo, facilisis sagittis eros sollicitudin posuere.</p>
+      <p className=" w-[95%] md:w-[80%]">Preserve precious moments with precision. Repaireranger offers expert servicing to ensure your video cameras capture every memory flawlessly.</p>
       </div>
       </div>
        {/* card end  */}
@@ -47,7 +53,7 @@ const WeRepaire = () => {
       </div>
       <div className=" space-y-4">
       <h2 className="  font-bold font-Roboto">COMPUTERS</h2>
-      <p className=" w-[80%]">Suspendisse potenti. Nunc dapibus nibh justo, facilisis sagittis eros sollicitudin posuere.</p>
+      <p className=" w-[95%] md:w-[80%]">Reignite productivity with reliable computer repairs. From hardware fixes to software solutions, Repaireranger restores your digital workspace to optimal performance.</p>
       </div>
       </div>
        {/* card end  */}
@@ -58,7 +64,7 @@ const WeRepaire = () => {
       </div>
       <div className=" space-y-4">
       <h2 className="  font-bold font-Roboto">TABLETS</h2>
-      <p className=" w-[80%]">Suspendisse potenti. Nunc dapibus nibh justo, facilisis sagittis eros sollicitudin posuere.</p>
+      <p className=" w-[80%]">Revive your portable powerhouse. Repairerangers expert technicians specialize in tablet repairs, ensuring you stay connected and productive on the go..</p>
       </div>
       </div>
        {/* card end  */}
@@ -70,7 +76,7 @@ const WeRepaire = () => {
       <div className=" space-y-4">
       <h2 className="  font-bold font-Roboto">PHOTO CAMERAS
 </h2>
-      <p className=" w-[80%]">Suspendisse potenti. Nunc dapibus nibh justo, facilisis sagittis eros sollicitudin posuere.</p>
+      <p className="w-[95%] ,md:w-[80%]">Capture life's moments in stunning clarity. Repaireranger's camera repairs restore functionality, so you never miss a shot of your precious memories.</p>
       </div>
       </div>
        {/* card end  */}
@@ -81,7 +87,7 @@ const WeRepaire = () => {
       </div>
       <div className=" space-y-4">
       <h2 className="  font-bold font-Roboto">GAME CONSOLES</h2>
-      <p className=" w-[80%]">Suspendisse potenti. Nunc dapibus nibh justo, facilisis sagittis eros sollicitudin posuere.</p>
+      <p className=" w-[80%]">Immerse yourself in gaming excellence. Repaireranger's expert repairs ensure your game consoles deliver unparalleled entertainment for hours of fun.</p>
       </div>
       </div>
        {/* card end  */}

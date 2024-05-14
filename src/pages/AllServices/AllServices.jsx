@@ -68,11 +68,11 @@ const AllServices = () => {
                 <p className="mt-4 mb-3 ">{data?.description.slice(0, 100)}</p>
                 <hr />
                 <div className="flex justify-between items-center mt-3">
-                 <Link to={`/singleservicedetails/${data?._id}`}> <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                 <Link to={`/singleservicedetails/${data?._id}`}> <button className="bg-blue-500 text-white m md:px-4 btn-sm md:btn-lg md:py-2 rounded-lg">
                     View Details
                   </button></Link>
                   <span className=""><span className="font-semibold">Price</span>: ${data?.price}</span>
-                  <span className=""><span className="font-semibold">Location</span>: {data?.serviceArea}</span>
+                  <span className=""><span className="font-semibold">Location</span>: {data?.serviceArea.slice(0,9)}</span>
                 </div>
               </div>
             </div>
@@ -81,18 +81,17 @@ const AllServices = () => {
       </div>
       {/* Pagination section */}
       <div className="flex justify-center mt-8">
-        <button onClick={handlePreviousPage} disabled={currentPage === 0} className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-4">
-          <GrLinkPrevious className="inline-block mr-2" />
-          Previous
+        <button onClick={handlePreviousPage} disabled={currentPage === 0} className=" btn btn-outline btn-circle">
+          <GrLinkPrevious size={20} className="inline-block mr-2" />
         </button>
        { pages.map((_, index) => (
-          <button key={index} onClick={() => setCurrentPage(index)} className={`px-4 py-2 rounded-lg mr-4 ${currentPage === index ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}>
+          <button key={index} onClick={() => setCurrentPage(index)} className={`mx-2 text-2xl ${currentPage === index ? "underline" : ''}`}>
             {index + 1}
           </button>
         ))}
-        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(count / itemPerPage) - 1} className="bg-blue-500 text-white px-4 py-2 rounded-lg ml-4" >
-          Next
-          <GrLinkNext className="inline-block ml-2" />
+        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(count / itemPerPage) - 1} className="btn btn-outline btn-circle" >
+
+          <GrLinkNext size={20} className="inline-block ml-2" />
         </button>
       </div>
     </div>

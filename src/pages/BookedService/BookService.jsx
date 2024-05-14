@@ -45,13 +45,18 @@ const BookService = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-8">
         {bookData.map((data, i) => (
           <div key={i} className="rounded-lg shadow-md bg-white">
-            <img
+           <div className=" relative">
+           <img
               className="w-full h-48 object-cover rounded-t-lg"
               src={data.serviceImage}
               alt={data.serviceName}
             />
+            <div className=" top-2 right-2 absolute">
+          <h2 className=" text-xl text-white capitalize btn-sm rounded-full bg-green-400 inline-block">{data?.status}</h2>
+            </div>
+           </div>
             <div className="p-4">
-              <h2 className="font-semibold text-xl mb-2">{data.serviceName}</h2>
+              <h2 className="font-semibold text-xl mb-2 text-black">{data.serviceName}</h2>
               <p className="text-gray-700">{data.description}</p>
               <div className="flex items-center justify-between mt-4">
                 <div className="flex items-center">

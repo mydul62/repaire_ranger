@@ -123,7 +123,7 @@ const SingleServiceDetails = () => {
           <div className="relative h-[326px]">
             <img
               className="w-full h-[326px] object-cover"
-              src="https://media.istockphoto.com/id/625135580/photo/laptop-disassembling-with-screwdriver-at-repair.jpg?s=1024x1024&w=is&k=20&c=SRQy9lxXhn2mHAthxIRBht3HLCRc6os5lfrOgSj3TuA="
+              src="https://i.ibb.co/VDBsb7j/technician-8326389-1280.jpg"
               alt=""
             />
             <div className="left-0 top-0 bottom-0 right-0 absolute inset-1 bg-[#09041780] flex justify-center items-center text-white">
@@ -153,7 +153,7 @@ const SingleServiceDetails = () => {
                   <span className="font-medium text-[#525252]">
                     Sort Description:
                   </span>
-                  {cartInfo.description.slice(0, 100)}
+                  {cartInfo.description.slice(0, 150)}
                 </h2>
                 <div>
                   <div className="flex items-center gap-8 border-t pb-3 border-[#bbb] pt-4">
@@ -164,33 +164,25 @@ const SingleServiceDetails = () => {
                       {cartInfo.serviceArea}
                     </h2>
                   </div>
-                  <div className="flex items-center gap-8 border-t border-b pb-3 border-[#bbb] pt-4">
+                  <div className="flex flex-wrap items-center gap-8 border-t border-b pb-3 border-[#bbb] pt-4">
                     <div className="h-9 w-9">
                       <img src={userImg} alt="" />
                     </div>
                     <h2 className="text-[#010101]  font-Roboto">
                       {cartInfo.providerName}
                     </h2>
-                    <div className="card-actions justify-end"></div>
+                    <div className="card-actions justify-end">
+                    <h2 className="text-[#010101] font-Roboto">
+                    <span className="font-medium">Service Price:</span> ${cartInfo.price}{" "}
+                  </h2>
+                    </div>
                   </div>
                 </div>
                 <BookedData cartInfo={cartInfo} ></BookedData>
               </div>
 
               {/* comment section  */}
-              {/* <div className=" my-4">
-                <h2 className=" font-bold font-Roboto text-xl">
-                  Share Your Comments
-                </h2>
-                <input
-                  className="w-full min-h-16 border-2 border-[#030303]"
-                  type="text"
-                />
-              </div>
-              <div className=" pb-2 border-b-2 mb-2">
-                <h2 className=" font-bold ">Comments(01):</h2>
-              </div>
-              <Comments key={commentInfo.id} commentInfo={commentInfo} ></Comments> */}
+  
                <div>
       <h1 className=" text-xl font-medium">Comments</h1>
       <form className=" " onSubmit={handleSubmitComment}>

@@ -101,6 +101,7 @@ const Navbar = () => {
   const handleMenuBar = (e) => {
     const isChecked = e.target.checked;
     setShow(isChecked);
+    setDrop(false)
   };
 
   return (
@@ -205,7 +206,7 @@ const Navbar = () => {
         className={` w-full absolute ${
           search
             ? "-top-72 h-0 delay-300 duration-1000"
-            : "top-0 h-[250px] duration-300"
+            : "top-0  h-[200px] md:h-[250px] duration-300"
         } min-h-[200px] bg-[#18324B] z-50`}
       >
         <div
@@ -223,7 +224,7 @@ const Navbar = () => {
           </h2>
         </div>
 
-        <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-12">
+        <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-6  md:mt-12">
         
          <div className=" flex ">
          <input onChange={onSearch}
@@ -239,7 +240,7 @@ const Navbar = () => {
           ></div>
         </div>
       </div>
-      <div className={`absolute z-40 md:hidden  w-full ${show?'top-20 duration-500':'-top-96 duration-500'}`}
+      <div className={`absolute z-40 md:hidden  w-full ${show?'top-20 duration-500':'-top-[500px] duration-500'}`}
       >
         
         <ul className=" flex flex-col pb-20 text-2xl  border-2 border-green-400 rounded-md px-8 pr-16 md:pt-8 pt-3 gap-8 text-[#010101] bg-[#eaeaea] ">
