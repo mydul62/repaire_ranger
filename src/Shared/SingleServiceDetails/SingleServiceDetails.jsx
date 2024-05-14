@@ -202,7 +202,7 @@ const SingleServiceDetails = () => {
         {comments?.map(comment => (
           <li className=" " key={comment._id}>
             <div className=" mb-3 mt-3 bg-[#eaeaea] pt-3 pb-2  px-2 rounded-md">
-            <h2 className=" text-xl capitalize">{comment.text}</h2>
+            <h2 className=" text-xl capitalize text-black font-Rancho">{comment.text}</h2>
            <div>
            <form  onSubmit={(e) => {
             e.preventDefault();
@@ -211,26 +211,26 @@ const SingleServiceDetails = () => {
             e.target.elements.replyText.value = '';
           }}>
            <div className=" flex  items-center gap-4">
-           <input className=" border-2 border-black rounded-xl px-2 py-1" type="text" name="replyText" placeholder="Type your reply here" />
-            <button className=" font-bold" type="submit">Reply</button>
+           <input className=" border my-1 border-[#535353] rounded-xl px-2 " type="text" name="replyText" placeholder="Type your reply here" />
+            <button className=" font-bold cursor-pointer text-black" type="submit">Reply</button>
             
            </div>
           </form>
-          <button onClick={()=>handleDeleteComment(comment._id)} className=" font-bold" type="submit">Delete</button>
+          <button onClick={()=>handleDeleteComment(comment._id)} className=" cursor-pointer text-black font-bold" type="submit">Delete</button>
            </div>
             </div>
             <ul>
               {comment.replies.map(reply => (
-                <div className=" ml-3  bg-[#eaeaea] pt-3 pb-2  px-2 rounded-md mt-3"  key={reply._id}><li className=" text-xl capitalize">{reply.text}</li>
+                <div className=" ml-3  bg-[#eaeaea] pt-3 pb-2  px-2 rounded-md mt-3"  key={reply._id}><li className=" text-xl text-black font-Rancho  capitalize">{reply.text}</li>
        <form  onSubmit={(e) => {
             e.preventDefault();
             const replyText = e.target.elements.replyText.value;
             handleSubmitReply(comment._id, replyText);
             e.target.elements.replyText.value = '';
           }}>
-           <div className=" flex  items-center gap-4">
-           <input className=" border-2 border-black rounded-xl px-2 py-1" type="text" name="replyText" placeholder="Type your reply here" />
-            <button className=" font-bold" type="submit">Reply</button>
+           <div className=" flex  items-center gap-4 my-1">
+           <input className=" border border-[#535353] rounded-xl px-2 " type="text" name="replyText" placeholder="Type your reply here" />
+            <button className=" font-bold cursor-pointer text-black"  type="submit">Reply</button>
            </div>
           </form>
           

@@ -34,11 +34,11 @@ const [datas,setDatas]=useState([])
      datas && datas.slice(0,4).map((data,i)=>(
         <div key={i}>
         <div data-aos="fade-up"
-     data-aos-duration="1000" className=" flex md:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
-          <div className=" md:w-[45%]  ">
+     data-aos-duration="1000" className=" flex lg:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
+          <div className=" lg:w-[45%]  ">
             <img src={data?.imgURL} className="  rounded-l-md w-full h-[215px]" alt="Movie" />
           </div>{" "}
-          <div className=" w-full md:w-[55%] h-full space-y-4 bg-base-100 rounded-r-md p-3">
+          <div className=" w-full lg:w-[55%] h-full space-y-4 bg-base-100 rounded-r-md p-3">
             <div className=" flex justify-between md:gap-4 gap-6 ">
             <div>
             <h2 className="  text-[[#1D3A59] font-medium text-2xl">{data?.serviceName.slice(0,18)}..</h2>
