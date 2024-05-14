@@ -111,11 +111,11 @@ const Navbar = () => {
           <div className="navbar-start ">
             <div className=" flex gap-12 items-center">
               <Link to={"/"} className=" text-3xl  font-bold">
-                Repair<span className=" text-green-500">Ranger</span>
+                <img className=" h-14" src="/logo.png" alt="" />
               </Link>
 
               <div className="navbar-center hidden lg:flex ">
-                <ul className=" flex justify-center gap-5 uppercase py-2 text-[16px] font-medium ">
+                <ul className=" flex justify-center gap-5 uppercase py-2 text-[14px] font-medium ">
                   {navlist}
                 </ul>
               </div>

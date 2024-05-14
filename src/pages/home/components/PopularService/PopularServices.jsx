@@ -31,7 +31,7 @@ const [datas,setDatas]=useState([])
       </div>
       <div className=" grid  grid-cols-1 gap-8 md:grid-cols-2 my-16 ">
       {
-     datas && datas.slice(0,4).map((data,i)=>(
+     datas && datas.slice(0,6).map((data,i)=>(
         <div key={i}>
         <div data-aos="fade-up"
      data-aos-duration="1000" className=" flex lg:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
@@ -49,7 +49,7 @@ const [datas,setDatas]=useState([])
             
             <div className=" flex  items-center justify-between border-t border-dashed pt-4">
             <div className="h-9 w-9 rounded-full">
-            <img className=" rounded-full" src={data?.providerImage} alt="" />
+            <img className=" h-9 w-9 rounded-full" src={data?.providerImage} alt="" />
             </div>
             <h2>{data?.providerName}</h2>
             <div className="card-actions justify-end ">
