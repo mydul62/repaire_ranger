@@ -1,5 +1,6 @@
 import DynamicTitle from "../DynamicTitle";
 import Carousel from "./components/Carousel/Carousel";
+import Features from "./components/Features/Features";
 import PopularServices from "./components/PopularService/PopularServices";
 import Testimonial from "./components/Testimonial/Testimonial";
 import WeRepaire from "./components/WeRepaire/WeRepaire";
@@ -14,6 +15,7 @@ const Home = () => {
       <WeRepaire></WeRepaire>
       <PopularServices></PopularServices>
       <WhyChoice></WhyChoice>
+      <Features></Features>
       <div className="">
       <Testimonial></Testimonial>
       </div>
