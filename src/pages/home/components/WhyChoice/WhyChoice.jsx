@@ -5,10 +5,18 @@ import { Link } from "react-router-dom";
 
 const WhyChoice = () => {
   return (
-   <div className=" bg-[#eee] py-16 md:py-24">
-    <div className=" max-w-7xl w-[95%]  mx-auto ">
+   <div className="  "  style={{
+      backgroundImage: "url('https://i.ibb.co/M9cnF3j/man-8312827-1280-1.jpg')",
+      height:"100%",
+      width:"100%",
+      backgroundAttachment:"fixed",
+      backgroundRepeat:"no-repeat",
+      backgroundSize:"cover"
+  }}>
+    <div className="bg-[#2c2c5497] py-16 md:py-16">
+    <div className=" max-w-7xl w-[95%]  mx-auto "> 
       <div className=" mb-12">
-      <h2 className=" text-center font-bold font-Roboto text-3xl text-[#010101]">WHY CHOOSE US</h2>
+      <h2 className=" text-center font-bold font-Roboto text-3xl text-white">WHY CHOOSE US</h2>
       </div>
       
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
@@ -21,13 +29,13 @@ const WhyChoice = () => {
       {/* card star  */}
       <div className=" flex  p-12 justify-start gap-6">
       <div>
-      <FaRegUser  size={70} color="gray" />
+      <FaRegUser  size={70} color="white" />
       </div>
       <div className=" space-y-4">
-      <h2 className="  font-bold font-Roboto text-[#020202]">CORPORATE SERVICES
+      <h2 className="  font-bold font-Roboto text-white">CORPORATE SERVICES
 </h2>
-      <p className=" w-[90%] md:w-[80%] text-[#535353]">Elevate your business with tailored corporate services. From strategy to technology, we drive growth, efficiency, and innovation for lasting success</p>
-      <h2 className=" text-[#010101] hover:text-green-500 font-Roboto font-bold"><Link to={'/allservices'} className=" flex items-center  gap-1">explore<FaArrowRightLong />
+      <p className=" w-[90%] md:w-[80%] text-white">Elevate your business with tailored corporate services. From strategy to technology, we drive growth, efficiency, and innovation for lasting success</p>
+      <h2 className=" text-white hover:text-green-500 font-Roboto font-bold"><Link to={'/allservices'} className=" flex items-center  gap-1">explore<FaArrowRightLong />
 </Link></h2>
       </div>
       </div>
@@ -41,13 +49,13 @@ const WhyChoice = () => {
       {/* card star  */}
       <div className=" flex r p-12 justify-start gap-6">
       <div>
-      <SlNotebook  size={70} color="gray" />
+      <SlNotebook  size={70} color="white" />
       </div>
       <div className=" space-y-4">
-      <h2 className="  font-bold font-Roboto text-[#020202]">QUALITY GUARANTEE
+      <h2 className="  font-bold font-Roboto text-white">QUALITY GUARANTEE
 </h2>
-      <p className=" w-[90%] md:w-[80%] text-[#535353]">Assuring excellence in every detail, our quality guarantee ensures satisfaction, reliability, and peace of mind for every product and service we provide.</p>
-      <h2 className=" text-[#010101] font-Roboto hover:text-green-500 font-bold"><Link to={'/allservices'} className=" flex items-center  gap-1">explore<FaArrowRightLong />
+      <p className=" w-[90%] md:w-[80%] text-white">Assuring excellence in every detail, our quality guarantee ensures satisfaction, reliability, and peace of mind for every product and service we provide.</p>
+      <h2 className=" text-white font-Roboto hover:text-green-500 font-bold"><Link to={'/allservices'} className=" flex items-center  gap-1">explore<FaArrowRightLong />
 </Link></h2>
       </div>
       </div>
@@ -63,6 +71,7 @@ const WhyChoice = () => {
       <div>
       
       </div>
+    </div>
     </div>
    </div>
   );

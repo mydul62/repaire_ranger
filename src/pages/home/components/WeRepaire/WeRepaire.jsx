@@ -15,7 +15,7 @@ const WeRepaire = () => {
 
 console.log();
   return (
-    <div className=" max-w-7xl w-[95%] mx-auto">
+    <div className="max-w-7xl w-[95%] mx-auto" >
       <div className=" my-16">
       <h2 className=" text-center font-bold font-Roboto text-3xl">WE REPAIRE</h2>
       </div>

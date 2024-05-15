@@ -48,7 +48,7 @@ const AllServices = () => {
   };
   if(loading){
   return <div className=" flex justify-center mt-36">
-     <div className="h-[400px] w-[600px]" style={{ background: `url(https://cdn.dribbble.com/users/1147690/screenshots/6386072/food-street3.gif)` }}>
+     <div className=" w-full h-screen md:h-[400px] md:w-[600px]" style={{ background: `url(https://cdn.dribbble.com/users/1147690/screenshots/6386072/food-street3.gif)` }}>
 </div>
 
   </div>
