@@ -4,24 +4,25 @@ import FavoriteCard from "./FavoriteCard";
 import { Link } from "react-router-dom";
 import { BsPen } from "react-icons/bs";
 import { AiTwotoneDelete } from "react-icons/ai";
+import useAuth from "../../Hooks/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 
 const FavoritePage = () => {
-const [favorites,setFavorites]=useState([]);
 const axiosCommon = useAxiosCommon()
-  useEffect(() => {
-    const fetchFavorites = async () => {
-      try {
-        const { data } = await axiosCommon.get('/favorites');
-        setFavorites(data);
-      } catch (error) {
-        console.error('Error fetching favorites:', error);
-      }
-    }
-    fetchFavorites();
-  }, []);
+const { user } = useAuth();
+const email = user.email;
+
+const { data: favorites, isLoading, error } = useQuery({
+  queryKey: ['favoriteservice', email],
+  queryFn: async () => {
+    const { data } = await axiosCommon.get(`/favorites/favorite/email/${email}`);
+    return data;
+  },
+});
   
-  
-console.log(favorites);
+if (isLoading) return <LoadingSpinner></LoadingSpinner>
+  if (error) return <div>Error: {error.message}</div>;
   return (
     <div className="max-w-7xl w-[95%] mx-auto my-16">
       <div className="overflow-x-auto">
@@ -31,12 +32,11 @@ console.log(favorites);
               <th>Service Title</th>
               <th>Price</th>
               <th>Details</th>
-              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
             {favorites &&
-              favorites.map((data) => (
+              favorites?.map((data) => (
                 <tr key={data._id}>
                   <td>
                     <div className="flex items-center gap-3">
@@ -59,14 +59,7 @@ console.log(favorites);
                   </Link>
                    
                   </td>
-                  <th>
-                    <button
-                    
-                      className="btn btn-circle text-red-700"
-                    >
-                      <AiTwotoneDelete size={25} />
-                    </button>
-                  </th>
+                
                 </tr>
               ))}
           </tbody>
