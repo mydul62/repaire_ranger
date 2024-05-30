@@ -11,6 +11,10 @@ export default {
         Roboto: ["Roboto", "sans-serif"],
         Rancho: ["Rancho", "cursive"],
       },
+      screens: {
+        'xs': {'max': '400px'},
+      },
+
     },
   },
   plugins: [

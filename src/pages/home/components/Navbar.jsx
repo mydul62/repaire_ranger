@@ -1,35 +1,36 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import useAuth from "../../../Hooks/useAuth";
-import { AiOutlineCaretDown } from "react-icons/ai";
-import { AiOutlineCaretUp } from "react-icons/ai";
 import { RiSearchLine } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
 import { MdDarkMode } from "react-icons/md";
 import { CiDark } from "react-icons/ci";
 import { useSearch } from "../../../Hooks/SearchProvider";
+
 const Navbar = () => {
   const [drop, setDrop] = useState(false);
   const { user, logout } = useAuth();
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState(true);
   const [theme, setTheme] = useState(false);
-  // const [searchData,setSearchData]=useState('')
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { handleSearch } = useSearch();
-  // const [searchQuery, setSearchQuery] = useState('');
+  const searchRef = useRef(null);
+
   const handleLogOut = () => {
     logout();
   };
+
   const handleDropDrown = () => {
     setDrop(!drop);
   };
+
   const handleSearchdrop = () => {
     setSearch(!search);
-    navigate('/allservices')
+    setShow(false);
+    navigate("/allservices");
   };
-  
-  // theme color toggle 
+
   const handleToggle = () => {
     setTheme(!theme);
   };
@@ -47,51 +48,26 @@ const Navbar = () => {
     htmlElement.setAttribute("data-theme", theme ? "night" : "light");
   }, [theme]);
 
-  const onSearch =(e) => {
+  const onSearch = (e) => {
     handleSearch(e.target.value);
-    
   };
 
   const navlist = (
     <>
-      <li>
+      <li onClick={() => setDrop(false)}>
         <NavLink>Home</NavLink>
       </li>
       <li>
         <NavLink to={"/allservices"}>Services</NavLink>
       </li>
-      {
-      user && <li className="">
-      <summary
-        className=" cursor-pointer flex items-center gap-0"
-        onClick={handleDropDrown}
-      >
-        Dashboard
-        <span>{drop ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}</span>{" "}
-      </summary>
-      <ul
-        className={`p-2 absolute  z-40  ${
-          drop ? "block duration-1000 bg-white shadow-md " : "hidden"
-        }  flex flex-col gap-3  px-8  rounded-md bg-[#9c9191] *:border-b *:py-3`}
-      >
-        <li>
-          <NavLink to={"/addservice"}>Add Service</NavLink>
+      {user && (
+        <li className="">
+          <Link to={"/dashboard"}>Dashboard</Link>
         </li>
-        <li>
-          <NavLink to={"/manageservice"}>Manage Service</NavLink>
-        </li>
-        <li>
-          <NavLink to={"/bookservice"}>Booked-Services</NavLink>
-        </li>
-        <li>
-          <NavLink to={"/servicetodo"}>Service-To-Do</NavLink>
-        </li>
-      </ul>
-    </li>
-      }
+      )}
       <li
         onClick={handleSearchdrop}
-        className="  md:flex hidden items-center pl-4"
+        className="md:flex hidden items-center pl-4"
       >
         <RiSearchLine size={20} />
       </li>
@@ -101,75 +77,99 @@ const Navbar = () => {
   const handleMenuBar = (e) => {
     const isChecked = e.target.checked;
     setShow(isChecked);
-    setDrop(false)
+    setDrop(false);
   };
 
+  // Click outside and scroll to close search field
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (searchRef.current && !searchRef.current.contains(event.target)) {
+        setSearch(true);
+      }
+    };
+
+    const handleScroll = () => {
+      setSearch(true);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [searchRef]);
+
   return (
-    <div className=" relative   py-3  w-full shadow-md ">
-      <div className=" ">
-        <div className="navbar max-w-7xl w-[95%] mx-auto ">
-          <div className="navbar-start ">
-            <div className=" flex gap-12 items-center">
-              <Link to={"/"} className=" text-3xl  font-bold">
-                <img className=" h-14" src="/logo.png" alt="" />
+    <div className="relative w-full">
+      <div className="shadow-md">
+        <div className="navbar max-w-7xl w-[95%] mx-auto">
+          <div className="navbar-start">
+            <div className="flex gap-12 items-center">
+              <Link to={"/"} className="text-3xl font-bold">
+                <img className="h-14" src="/logo.png" alt="" />
               </Link>
 
-              <div className="navbar-center hidden lg:flex ">
-                <ul className=" flex justify-center gap-5 uppercase py-2 text-[14px] font-medium ">
+              <div className="navbar-center hidden lg:flex">
+                <ul className="flex justify-center gap-5 uppercase py-2 text-[14px] font-medium">
                   {navlist}
                 </ul>
               </div>
             </div>
           </div>
           <div className="navbar-end gap-3">
-          <button
+            <button
               onClick={handleSearchdrop}
-              className=" flex md:flex lg:hidden items-center pl-4"
+              className="flex md:flex lg:hidden items-center pl-4"
             >
               <RiSearchLine size={20} />
             </button>
-           <div className=" hidden md:flex items-center gap-3 ">
-           
-            {!user && (
-              <Link to={"/login"} className="btn">
-                Login
-              </Link>
-            )}
+            <div className="hidden md:flex items-center gap-3">
+              {!user && (
+                <Link to={"/login"} className="btn">
+                  Login
+                </Link>
+              )}
 
-            {user && (
-              <>
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost btn-circle avatar"
-                  >
-                    <div className="w-10 rounded-full">
-                      <img
-                        alt="Tailwind CSS Navbar component"
-                        src={user.photoURL}
-                      />
+              {user && (
+                <>
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-ghost btn-circle avatar"
+                    >
+                      <div className="w-10 rounded-full">
+                        <img
+                          alt="Tailwind CSS Navbar component"
+                          src={user.photoURL}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <button className=" btn btn-outline" onClick={handleLogOut}>
-                  Logout
-                </button>
-              </>
-            )}
-           </div>
-           <div className=" hidden md:flex justify-end  gap-3">
-            <div
-              onClick={handleToggle}
-              className="btn btn-outline rounded-full "
-            >
-              {theme ? <MdDarkMode  size={25} /> : <CiDark color="black" size={25} />}
+                  <button className="btn btn-outline" onClick={handleLogOut}>
+                    Logout
+                  </button>
+                </>
+              )}
             </div>
-          </div>
+            <div className="hidden md:flex justify-end gap-3">
+              <div
+                onClick={handleToggle}
+                className="btn btn-outline rounded-full"
+              >
+                {theme ? (
+                  <MdDarkMode size={25} />
+                ) : (
+                  <CiDark color="black" size={25} />
+                )}
+              </div>
+            </div>
             <div>
               <label
                 onChange={handleMenuBar}
-                className="btn btn-circle lg:hidden  swap swap-rotate"
+                className="btn btn-circle lg:hidden swap swap-rotate"
               >
                 {/* this hidden checkbox controls the state */}
                 <input type="checkbox" />
@@ -200,89 +200,94 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className=" flex justify-center  shadow-inne"></div>
+        <div className="flex justify-center shadow-inne"></div>
       </div>
       <div
-        className={` w-full absolute ${
+        ref={searchRef}
+        className={`w-full ${
           search
-            ? "-top-72 h-0 delay-300 duration-1000"
-            : "top-0  h-[200px] md:h-[250px] duration-300"
-        } min-h-[200px] bg-[#18324B] z-50`}
+            ? "-top-72 delay-300 absolute duration-1000"
+            : "top-24 fixed duration-300"
+        } bg-[#18324be1] z-50`}
       >
-        <div
-          onClick={() => handleSearchdrop(setSearch(false))}
-          className=" flex py-4 justify-between mx-12 my-4"
-        >
-          <h2>
-            {" "}
-            <a className=" text-3xl text-[#535353] font-bold">
-              Repair<span className=" text-green-500">Ranger</span>
-            </a>
-          </h2>
-          <h2 className=" text-white border-2 rounded-full p-1  font-bold">
-            <RxCross1 size={30} />
-          </h2>
-        </div>
-
-        <div className="max-w-[60%] mx-auto flex flex-col justify-center items-center mt-6  md:mt-12">
-        
-         <div className=" flex ">
-         <input onChange={onSearch}
-            type="text"
-            placeholder="Type Words"
-            className=" bg-transparent text-white font-bold text-2xl    outline-none   w-full py-4 "
-          /> 
-         </div>
-          <div
-            className={` float-left h-[1px] bg-[#82738e] ${
-              search ? "w-0 duration-300" : "w-full duration-1000"
-            } `}
-          ></div>
+        <div className="max-w-[80%] mx-auto flex justify-between items-center">
+          <div className=""></div>
+          <div>
+            <div className="flex">
+              <input
+                onChange={onSearch}
+                type="text"
+                placeholder="Type Words"
+                className="bg-transparent text-white font-bold text-xl outline-none w-full py-4"
+              />
+            </div>
+            <div
+              className={`float-left h-[1px] mb-3 bg-white ${
+                search ? "w-0 duration-300" : "w-full duration-1000"
+              }`}
+            ></div>
+          </div>
+          <div className="">
+            <h2
+              onClick={() => handleSearchdrop(setSearch(false))}
+              className="text-white border-2 rounded-full p-1 font-bold"
+            >
+              <RxCross1 size={15} />
+            </h2>
+          </div>
         </div>
       </div>
-      <div className={`absolute z-40 md:hidden  w-full ${show?'top-20 duration-500':'-top-[500px] duration-500'}`}
+      <div
+        className={`lg:hidden bg-[#e4dfdf44] pt-4 pb-5 border-t h-full w-full ${
+          show ? "duration-500 h-full" : "hidden h-0 duration-500"
+        }`}
       >
-        
-        <ul className=" flex flex-col pb-20 text-2xl  border-2 border-green-400 rounded-md px-8 pr-16 md:pt-8 pt-3 gap-8 text-[#010101] bg-[#eaeaea] ">
-        <div className=" flex md:hidden  gap-3 items-center">
-        <div
+        <ul className="flex flex-col gap-3 pl-6">
+          <div className="flex md:hidden gap-3 items-center">
+            <div
               onClick={handleToggle}
-              className="btn btn-outline rounded-full "
+              className="btn btn-sm btn-outline rounded-full"
             >
-              {theme ? <MdDarkMode  size={25} /> : <CiDark color="black" size={25} />}
+              {theme ? (
+                <MdDarkMode size={25} />
+              ) : (
+                <CiDark color="black" size={25} />
+              )}
             </div>
-            <div className=" flex md:hidden items-center gap-3 ">
-           
-            {!user && (
-              <Link to={"/login"} className="btn">
-                Login
-              </Link>
-            )}
+            <div className="flex md:hidden items-center gap-3">
+              {!user && (
+                <Link to={"/login"} className="btn">
+                  Login
+                </Link>
+              )}
 
-            {user && (
-              <>
-                <div className="dropdown dropdown-end">
-                  <div
-                    tabIndex={0}
-                    role="button"
-                    className="btn btn-ghost btn-circle avatar"
-                  >
-                    <div className="w-10 rounded-full">
-                      <img
-                        alt="Tailwind CSS Navbar component"
-                        src={user.photoURL}
-                      />
+              {user && (
+                <>
+                  <div className="dropdown dropdown-end">
+                    <div
+                      tabIndex={0}
+                      role="button"
+                      className="btn btn-sm btn-ghost btn-circle avatar"
+                    >
+                      <div className="w-7 rounded-full">
+                        <img
+                          alt="Tailwind CSS Navbar component"
+                          src={user.photoURL}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <button className=" btn btn-outline" onClick={handleLogOut}>
-                  Logout
-                </button>
-              </>
-            )}
-           </div>
-        </div>
-          {navlist} 
+                  <button
+                    className="btn btn-sm btn-outline"
+                    onClick={handleLogOut}
+                  >
+                    Logout
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+          {navlist}
         </ul>
       </div>
     </div>

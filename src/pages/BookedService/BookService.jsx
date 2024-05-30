@@ -3,41 +3,30 @@ import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import DynamicTitle from "../DynamicTitle";
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
 
 const BookService = () => {
-  const [bookData, setBookData] = useState([]);
   const { user } = useAuth();
+  const axiosCommon = useAxiosCommon()
   const email = user.email;
-
-  useEffect(() => {
-    const getDataById = async () => {
-      const { data } = await axios.get(
-        `https://server-omega-dusky.vercel.app/services/service/booked-service/${email}`
-      );
-
-      setBookData(data);
-    };
-    getDataById();
-  }, [email]);
-
-  if (!bookData.length) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <DynamicTitle title={'Booked-services'} />
-        <div className="space-y-4 text-center">
-          <h3 className="text-3xl">You haven't booked anything yet.</h3>
-          <div>
-            <Link to="/allservices">
-              <button className="btn text-xl font-Roboto bg-green-400">Book Now</button>
-            </Link>
-          </div>
-        </div>
-      </div>
-    );
+  const {data:bookData,isLoading}=useQuery({
+  queryKey:'bookedservice',
+  queryFn:async()=>{
+    const { data } = await axiosCommon.get(`/services/service/booked-service/${email}`);
+    return data;
   }
-
+  })
+ 
+ if(isLoading){
+  return <LoadingSpinner></LoadingSpinner>
+ }
   return (
-    <div className="max-w-7xl w-[90%] mx-auto my-16">
+ 
+  <div>
+  {
+    bookData.length > 0 ?  <div className="max-w-7xl w-[90%] mx-auto my-16">
     <div>
     <h2 className=" text-3xl text-center my-12">All Booked Data({bookData?.length})</h2>
     </div>
@@ -73,7 +62,21 @@ const BookService = () => {
           </div>
         ))}
       </div>
-    </div>
+    </div> :  <div className="flex justify-center items-center min-h-screen">
+        <DynamicTitle title={'Booked-services'} />
+        <div className="space-y-4 text-center">
+          <h3 className="text-3xl">You haven't booked anything yet.</h3>
+          <div>
+            <Link to="/allservices">
+              <button className="btn text-xl font-Roboto bg-green-400">Book Now</button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    
+  }
+  </div>
+   
   );
 };
 

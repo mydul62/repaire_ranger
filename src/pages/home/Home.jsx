@@ -1,3 +1,4 @@
+import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
 import DynamicTitle from "../DynamicTitle";
 import Carousel from "./components/Carousel/Carousel";
 import Features from "./components/Features/Features";
@@ -8,6 +9,7 @@ import WhyChoice from "./components/WhyChoice/WhyChoice";
 
 const Home = () => {
   return (
+    <LoadingSpinner>
     <div>
        <DynamicTitle title={''}></DynamicTitle>
 
@@ -20,6 +22,7 @@ const Home = () => {
       <Testimonial></Testimonial>
       </div>
      </div>
+    </LoadingSpinner>
   );
 };
 

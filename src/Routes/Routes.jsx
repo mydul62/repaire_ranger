@@ -14,6 +14,8 @@ import PriveteRoutes from "./PriveteRoutes";
 import SingleServiceDetails from "../Shared/SingleServiceDetails/SingleServiceDetails";
 import Errorpage from "../pages/Errorpage/Errorpage";
 import UpdatedServiceData from "../pages/ManageService/UpdateServiceData/UpdatedServiceData";
+import DashBoard from "../pages/Dashboard/DashBoard";
+import FavoritePage from "../pages/FavoritePage/FavoritePage";
 
 export const router =createBrowserRouter([
 {
@@ -30,23 +32,6 @@ children:[
   element:<AllServices></AllServices>
 },
 {
-  path:'/addservice',
-  element:<PriveteRoutes><AddService></AddService></PriveteRoutes>
-  
-},
-{
-  path:'/manageservice',
-  element:<PriveteRoutes><ManageService></ManageService></PriveteRoutes>
-},
-{
-  path:'/bookservice',
-  element:<PriveteRoutes><BookService></BookService></PriveteRoutes>
-},
-{
-  path:'servicetodo',
-  element:<PriveteRoutes><ServiceToDo></ServiceToDo></PriveteRoutes>
-},
-{
   path:'/login',
   element:<Login></Login>
 },
@@ -58,10 +43,39 @@ children:[
   path:'/singleservicedetails/:id',
   element:<PriveteRoutes><SingleServiceDetails></SingleServiceDetails></PriveteRoutes>
 },
+]
+},
 {
-path:'/updatedservicedata/:id',
-element:<UpdatedServiceData></UpdatedServiceData>
-}
+path:'/dashboard',
+element:<DashBoard></DashBoard>,
+children:[
+  {
+    path:'',
+    element:<PriveteRoutes><AddService></AddService></PriveteRoutes>
+    
+  },
+  {
+    path:'manageservice',
+    element:<PriveteRoutes><ManageService></ManageService></PriveteRoutes>
+  },
+  {
+    path:'bookservice',
+    element:<PriveteRoutes><BookService></BookService></PriveteRoutes>
+  },
+  {
+    path:'servicetodo',
+    element:<PriveteRoutes><ServiceToDo></ServiceToDo></PriveteRoutes>
+  },
+  {
+    path:'/dashboard/updateservicedata/:id',
+    element:<PriveteRoutes><UpdatedServiceData></UpdatedServiceData></PriveteRoutes>
+  },
+  {
+  path:'/dashboard/favorites',
+  element:<FavoritePage></FavoritePage>
+  
+  }
+ 
 ]
 }
 ])

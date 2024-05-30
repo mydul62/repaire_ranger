@@ -34,7 +34,7 @@ const [datas,setDatas]=useState([])
      datas && datas.slice(0,6).map((data,i)=>(
         <div key={i}>
         <div data-aos="fade-up"
-     data-aos-duration="1000" className=" flex lg:flex-row flex-col p-2 justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
+     data-aos-duration="1000" className=" flex lg:flex-row flex-col justify-center gap-4 md:gap-0 shadow-xl bg-[#eaeaeab8]  rounded-l-md">
           <div className=" lg:w-[45%]  ">
             <img src={data?.imgURL} className="  rounded-l-md w-full h-[215px]" alt="Movie" />
           </div>{" "}

@@ -12,10 +12,10 @@ import { Autoplay, Pagination } from "swiper/modules";
 export default function Testimonial() {
   return (
     <>
-      <div className="  bg-no-repeat bg-cover py-32">
+      <div className="  bg-no-repeat bg-cover pb-24 pt-16 md:pt-0">
         <div className="max-w-6xl w-[90%] mx-auto ">
-          <div className=" pb-8">
-            <h2 className=" text-3xl font-medium font-Rancho ">Testi<span className=" text-green-400">monial</span></h2>
+          <div className=" pb-12">
+            <h2 className=" text-3xl font-bold font-Rancho ">Testi<span className=" text-green-400">monials</span></h2>
           </div>
           <Swiper
             slidesPerView={2}

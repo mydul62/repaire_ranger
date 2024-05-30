@@ -56,7 +56,7 @@ useEffect(() => {
       timer: 1500
     });
     form.reset()
-    navigate('/manageservice')
+    navigate('/dashboard/manageservice')
   })
   .catch(function (error) {
     console.log(error);
@@ -66,7 +66,7 @@ useEffect(() => {
   
   return (
     <div className=" max-w-7xl mx-auto my-24 fle justify-center items-center">
-    <div className=" w-[95%] md:w-[70%] mx-auto">
+    <div className=" w-[90%]mx-auto">
     <form onSubmit={(e)=>handleUpdate(e)} className=" w-[95%] shadow-lg   mx-auto  bg-white  rounded-t-badge ">
   <div className=" space-y-6 p-6">
   <h2 className=" text-3xl py-6 font-semibold font-Rancho text-[#535353] "> Update Service Here</h2>

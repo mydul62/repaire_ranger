@@ -1,17 +1,14 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import FadeLoader from "react-spinners/ClipLoader";
+import LoadingSpinner from "../Shared/LoadingSpinner/LoadingSpinner";
 
 
 const PriveteRoutes = ({children}) => {
 const {user,loading}=useAuth();
 const location = useLocation();
 if(loading){
-return <div className=" flex items-center justify-center ">
-<div className=" mt-[100px]">
-<FadeLoader size={60} color="#36d7b7" />
-</div>
-</div>
+return <LoadingSpinner></LoadingSpinner>
 }
 if(user){
 return children

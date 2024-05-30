@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import DynamicTitle from "../../pages/DynamicTitle";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 // import { commentdata } from "../../../public/commentData";
 const SingleServiceDetails = () => {
   const { id } = useParams();
@@ -115,6 +116,7 @@ const SingleServiceDetails = () => {
     }
 
   return (
+   <LoadingSpinner>
     <div>
        <DynamicTitle title={'Service-details'}></DynamicTitle>
 
@@ -248,6 +250,7 @@ const SingleServiceDetails = () => {
         </div>
       )}
     </div>
+   </LoadingSpinner>
   );
 };
 

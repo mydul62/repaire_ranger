@@ -5,32 +5,36 @@ import { GrLinkNext } from "react-icons/gr";
 import { GrLinkPrevious } from "react-icons/gr";
 import DynamicTitle from "../DynamicTitle";
 import { Link } from "react-router-dom";
-  import loadingImg from "/food-street3.gif"
+import { ImSpinner9 } from "react-icons/im";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
+
 const AllServices = () => {
   const [datas, setDatas] = useState([]);
   const { searchResults } = useSearch();
   const [itemPerPage, setItemPerPage] = useState(6);
   const [currentPage, setCurrentPage] = useState(0);
   const [count, setCount] = useState(0);
-  const [loading,setLoading]=useState(true)
-  const numbeOfpages = Math.ceil(count /itemPerPage)
-   const pages = [...Array(numbeOfpages).keys()]
+  const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
+  const numbeOfpages = Math.ceil(count / itemPerPage);
+  const pages = [...Array(numbeOfpages).keys()];
+  const axiosCommon = useAxiosCommon();
+
   useEffect(() => {
     const getServiceData = async () => {
-     setLoading(true)
-      const { data } = await axios.get(`https://server-omega-dusky.vercel.app/all-servicefilter?page=${currentPage}&size=${itemPerPage}`);
+      const { data } = await axiosCommon.get(`/all-servicefilter?page=${currentPage}&size=${itemPerPage}`);
       setDatas(data);
-      setLoading(false)
     }
     getServiceData();
   }, [currentPage, itemPerPage]);
 
   useEffect(() => {
     const getCount = async () => {
-    setLoading(true)
-      const { data } = await axios.get('https://server-omega-dusky.vercel.app/service/services-count');
+      setLoading(true);
+      const { data } = await axiosCommon.get('/service/services-count');
       setCount(data.count);
-      setLoading(false)
+      setLoading(false);
     }
     getCount();
   }, []);
@@ -39,6 +43,18 @@ const AllServices = () => {
     setDatas(searchResults);
   }, [searchResults]);
 
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const { data } = await axiosCommon.get('/favorites');
+        setFavorites(data);
+      } catch (error) {
+        console.error('Error fetching favorites:', error);
+      }
+    }
+    fetchFavorites();
+  }, []);
+
   const handlePreviousPage = () => {
     setCurrentPage(prevPage => prevPage - 1);
   };
@@ -46,16 +62,36 @@ const AllServices = () => {
   const handleNextPage = () => {
     setCurrentPage(prevPage => prevPage + 1);
   };
-  if(loading){
-  return <div className=" flex justify-center mt-36">
-     <div className=" w-full h-screen md:h-[400px] md:w-[600px]" style={{ background: `url(https://cdn.dribbble.com/users/1147690/screenshots/6386072/food-street3.gif)` }}>
-</div>
 
-  </div>
+  const isFavorite = (serviceId) => {
+    return favorites.some(favorite => favorite.serviceId === serviceId);
   }
+
+  const toggleFavorite = async (service) => {
+    try {
+      if (isFavorite(service._id)) {
+        await axiosCommon.delete(`/favorite/${service._id}`);
+        setFavorites(prev => prev.filter(fav => fav.serviceId !== service._id));
+      } else {
+        await axiosCommon.post('/favorite',service);
+        setFavorites(prev => [...prev, { serviceId: service._id }]);
+      }
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ImSpinner9 className="animate-spin text-blue-500 text-6xl" />
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-7xl mx-auto my-16">
-       <DynamicTitle title={'All-services'}></DynamicTitle>
+      <DynamicTitle title={'All-services'}></DynamicTitle>
 
       <div className="md:w-[50%] mx-auto flex justify-center">
         <h1 className="text-center text-3xl md:text-4xl border-b-4 pb-3 border-green-100 inline-block font-semibold font-Rancho">
@@ -67,22 +103,29 @@ const AllServices = () => {
           <div key={i} className="w-[95%] md:w-[80%] lg:w-[70%] mx-auto">
             <div className="flex flex-col mx-auto rounded-lg shadow-md overflow-hidden">
               <img src={data?.imgURL} className="object-cover w-full h-64" alt="Service" />
-              <div className=" p-6 bg-[#7b3ff20e]">
-                <div className="flex items-center">
-                  <img src={data?.providerImage} className="w-10 h-10 rounded-full mr-4" alt="User" />
-                  <div>
-                    <h2 className="text-lg font-semibold">{data?.serviceName}</h2>
-                    <p className="text-sm text-gray-600">{data?.providerName}</p>
+              <div className="p-6 bg-[#7b3ff20e]">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <img src={data?.providerImage} className="w-10 h-10 rounded-full mr-4" alt="User" />
+                    <div>
+                      <h2 className="text-lg font-semibold">{data?.serviceName}</h2>
+                      <p className="text-sm text-gray-600">{data?.providerName}</p>
+                    </div>
                   </div>
+                  <button onClick={() => toggleFavorite(data)}>
+                    {isFavorite(data._id) ? <FaHeart className="text-red-500" /> : <FaRegHeart />}
+                  </button>
                 </div>
                 <p className="mt-4 mb-3 ">{data?.description.slice(0, 100)}</p>
                 <hr />
                 <div className="flex justify-between items-center mt-3">
-                 <Link to={`/singleservicedetails/${data?._id}`}> <button className="bg-blue-500 text-white m md:px-4 btn-sm md:btn-lg md:py-2 rounded-lg">
-                    View Details
-                  </button></Link>
-                  <span className=""><span className="font-semibold">Price</span>: ${data?.price}</span>
-                  <span className=""><span className="font-semibold">Location</span>: {data?.serviceArea.slice(0,9)}</span>
+                  <Link to={`/singleservicedetails/${data?._id}`}>
+                    <button className="bg-blue-500 text-white md:px-4 btn-sm md:btn-lg md:py-2 rounded-lg">
+                      View Details
+                    </button>
+                  </Link>
+                  <span><span className="font-semibold">Price</span>: ${data?.price}</span>
+                  <span><span className="font-semibold">Location</span>: {data?.serviceArea.slice(0, 9)}</span>
                 </div>
               </div>
             </div>
@@ -91,16 +134,15 @@ const AllServices = () => {
       </div>
       {/* Pagination section */}
       <div className="flex justify-center mt-8">
-        <button onClick={handlePreviousPage} disabled={currentPage === 0} className=" btn btn-outline btn-circle">
+        <button onClick={handlePreviousPage} disabled={currentPage === 0} className="btn btn-outline btn-circle">
           <GrLinkPrevious size={20} className="inline-block mr-2" />
         </button>
-       { pages.map((_, index) => (
+        {pages.map((_, index) => (
           <button key={index} onClick={() => setCurrentPage(index)} className={`mx-2 text-2xl ${currentPage === index ? "underline" : ''}`}>
             {index + 1}
           </button>
         ))}
-        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(count / itemPerPage) - 1} className="btn btn-outline btn-circle" >
-
+        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(count / itemPerPage) - 1} className="btn btn-outline btn-circle">
           <GrLinkNext size={20} className="inline-block ml-2" />
         </button>
       </div>

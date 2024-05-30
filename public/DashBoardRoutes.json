@@ -1,0 +1,27 @@
+[
+{
+  "name":"Add Service",
+  "route":"",
+  "icon":"MdMedicalServices"
+},
+{
+  "name":"Manage Service",
+  "route":"manageservice",
+  "icon":"MdManageAccounts"
+},
+{
+  "name":"Book Service",
+  "route":"bookservice",
+  "icon":"MdMedicalServices"
+},
+{
+  "name":"Service TODO",
+  "route":"servicetodo",
+  "icon":"FcTodoList"
+},
+{
+  "name":"Favorites",
+  "route":"favorites",
+  "icon":"FcTodoList"
+}
+]

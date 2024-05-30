@@ -1,29 +1,47 @@
-import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
-import axios from "axios";
 import { BsPen } from "react-icons/bs";
 import { AiTwotoneDelete } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import DynamicTitle from "../DynamicTitle";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { ImSpinner9 } from "react-icons/im";
+import useAxiosCommon from "../../Hooks/useAxiosCommon";
 
 const ManageService = () => {
-  const [cartInfo, setCardInfo] = useState([]);
   const { user } = useAuth();
-
   const email = user.email;
+  const queryClient = useQueryClient();
+  const axiosCommon = useAxiosCommon()
 
-  useEffect(() => {
-    const getDataById = async () => {
-      const { data } = await axios.get(
-        `https://server-omega-dusky.vercel.app/services/service/${email}`
-      );
+  const { data: cartInfo, isLoading } = useQuery({
+    queryKey: ['postservice', email],
+    queryFn: async () => {
+      const { data } = await axiosCommon.get(`/services/service/${email}`);
+      return data;
+    },
+  });
 
-      setCardInfo(data);
-    };
-    getDataById();
-  }, [email]);
-  console.log(cartInfo);
+  const mutation = useMutation({
+    mutationFn: async (id) => {
+      await axiosCommon.delete(`/services/service/delete/${id}`);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries('postservice');
+      Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success",
+      });
+    },
+    onError: (error) => {
+      Swal.fire({
+        title: "Error!",
+        text: error.message,
+        icon: "error",
+      });
+    }
+  });
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -36,42 +54,28 @@ const ManageService = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://server-omega-dusky.vercel.app/services/service/delete/${id}`,
-          {
-            method: "DELETE",
-          }
-        )
-          .then((res) => res.json())
-          .then((data) => {
-            const updatedData = cartInfo.filter((item) => item._id !== id);
-            setCardInfo(updatedData);
-          })
-          .catch((error) => {
-            console.error("Error deleting item:", error);
-          });
-
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success",
-        });
+        mutation.mutate(id);
       }
     });
   };
 
-
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ImSpinner9 className="animate-spin text-blue-500 text-6xl" />
+      </div>
+    );
+  }
 
   if (!cartInfo.length > 0) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <DynamicTitle title={"Manages-services"}></DynamicTitle>
-
-        <div className=" space-y-4  text-center">
-          <h3 className=" text-3xl ">You Do Not Added Service</h3>
+        <DynamicTitle title={"Manage-services"} />
+        <div className="space-y-4 text-center">
+          <h3 className="text-3xl">You Do Not Added Service</h3>
           <div>
-            <Link to={"/addservice"}>
-              <button className=" btn text-xl font-Roboto bg-green-400">
+            <Link to={"addservice"}>
+              <button className="btn text-xl font-Roboto bg-green-400">
                 Add Service
               </button>
             </Link>
@@ -80,11 +84,11 @@ const ManageService = () => {
       </div>
     );
   }
+
   return (
-    <div className=" max-w-7xl w-[95%] mx-auto my-16">
+    <div className="max-w-7xl w-[95%] mx-auto my-16">
       <div className="overflow-x-auto">
         <table className="table">
-          {/* head */}
           <thead>
             <tr>
               <th></th>
@@ -95,7 +99,6 @@ const ManageService = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
             {cartInfo &&
               cartInfo.map((data, i) => (
                 <tr key={data._id}>
@@ -104,10 +107,7 @@ const ManageService = () => {
                     <div className="flex items-center gap-3">
                       <div className="avatar">
                         <div className="mask rounded-md w-16 h-16 md:w-20 md:h-20">
-                          <img
-                            src={data.imgURL}
-                            alt="Avatar Tailwind CSS Component"
-                          />
+                          <img src={data.imgURL} alt="Service" />
                         </div>
                       </div>
                       <div>
@@ -116,12 +116,12 @@ const ManageService = () => {
                     </div>
                   </td>
                   <td>
-                    <h3 className=" w-[100%] md:w-[50%]">
+                    <h3 className="w-[100%] md:w-[50%]">
                       {data?.description.slice(0, 50)}
                     </h3>
                   </td>
                   <td>
-                    <Link to={`/updatedservicedata/${data._id}`}>
+                    <Link to={`/dashboard/updateservicedata/${data?._id}`}>
                       <button className="btn btn-circle text-green-500">
                         <BsPen size={20} />
                       </button>
@@ -130,7 +130,7 @@ const ManageService = () => {
                   <th>
                     <button
                       onClick={() => handleDelete(data._id)}
-                      className="btn btn-circle text-red-700 "
+                      className="btn btn-circle text-red-700"
                     >
                       <AiTwotoneDelete size={25} />
                     </button>
